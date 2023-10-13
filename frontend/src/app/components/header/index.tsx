@@ -33,35 +33,38 @@ export const Header = () => {
         </Link>
         <nav className={open ? "actived" : ""}>
           <ul>
-           
-            <li
-              className={pathname == "/ofertas" ? "active-link" : ""}
-              onClick={() => setOpen(false)}
-            >
-              Register Movies
-            </li>
             <Link href={"/register"}>
               <li
                 className={pathname == "/register" ? "active-link" : ""}
                 onClick={() => setOpen(false)}
               >
+                Register Movies
+              </li>
+            </Link>
+            <Link href={"/edit"}>
+              <li
+                className={pathname == "/edit" ? "active-link" : ""}
+                onClick={() => setOpen(false)}
+              >
                 Edit Movies
               </li>
             </Link>
-            <Link href={"/login"}>
+            <Link href={"/hot"}>
               <li
-                className={pathname == "/login" ? "active-link" : ""}
+                className={pathname == "/hot" ? "active-link" : ""}
                 onClick={() => setOpen(false)}
               >
-                Hot 
+                Hot
               </li>
             </Link>
-            <li
-              className={pathname == "/duvidas" ? "active-link" : ""}
-              onClick={() => setOpen(false)}
-            >
-              About
-            </li>
+            <Link href={"about"}>
+              <li
+                className={pathname == "/about" ? "active-link" : ""}
+                onClick={() => setOpen(false)}
+              >
+                About
+              </li>
+            </Link>
           </ul>
           {open && (
             <div className="">
@@ -84,7 +87,7 @@ export const Header = () => {
             <User size={28} color="#7d7373" />
             Acessar conta
           </button>
-          <button className="assine">Assine já!</button>
+          <button className="assine">Cadastre-se!</button>
         </div>
         <button
           className={open ? "mobile actived" : "mobile"}

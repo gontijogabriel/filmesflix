@@ -28,29 +28,24 @@ export const Header = () => {
             className={pathname == "/" ? "active-link" : ""}
             onClick={() => setOpen(false)}
           >
-            Aluga Car
+            FilmesFlix
           </h2>
         </Link>
         <nav className={open ? "actived" : ""}>
           <ul>
-            <li
-              className={pathname == "/gruposdecarros" ? "active-link" : ""}
-              onClick={() => setOpen(false)}
-            >
-              Grupos De Carros
-            </li>
+           
             <li
               className={pathname == "/ofertas" ? "active-link" : ""}
               onClick={() => setOpen(false)}
             >
-              Ofertas
+              Register Movies
             </li>
             <Link href={"/register"}>
               <li
                 className={pathname == "/register" ? "active-link" : ""}
                 onClick={() => setOpen(false)}
               >
-                Cadastro
+                Edit Movies
               </li>
             </Link>
             <Link href={"/login"}>
@@ -58,14 +53,14 @@ export const Header = () => {
                 className={pathname == "/login" ? "active-link" : ""}
                 onClick={() => setOpen(false)}
               >
-                Login
+                Hot 
               </li>
             </Link>
             <li
               className={pathname == "/duvidas" ? "active-link" : ""}
               onClick={() => setOpen(false)}
             >
-              Dúvidas
+              About
             </li>
           </ul>
           {open && (
@@ -79,7 +74,7 @@ export const Header = () => {
           )}
         </nav>
         <div className="input">
-          <input type="text" placeholder="Search you Car" />
+          <input type="text" placeholder="Search you Movie" />
           <span>
             <MagnifyingGlass size={25} color="#756e6e" />
           </span>

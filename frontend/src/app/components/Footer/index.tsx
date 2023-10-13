@@ -57,14 +57,14 @@ export const Footer = () => {
             <TwitterLogo size={28} />
           </div>
         </div>
-        <ThemeToggle
+        {/* <ThemeToggle
           className={isDarkMode ? "sky-actived" : "sky"}
           onClick={toggleTheme}
         >
           <SunMoonIcon
             className={isDarkMode ? "sun-moon-actived" : "sun-moon"}
           />
-        </ThemeToggle>
+        </ThemeToggle> */}
       </FooterBotton>
     </FooterContainer>
   );

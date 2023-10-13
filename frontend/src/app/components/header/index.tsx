@@ -35,7 +35,7 @@ export const Header = () => {
           <ul>
             <Link href={"/register"}>
               <li
-                className={pathname == "/ofertas" ? "active-link" : ""}
+                className={pathname == "/register" ? "active-link" : ""}
                 onClick={() => setOpen(false)}
               >
                 Register Movies
@@ -43,7 +43,7 @@ export const Header = () => {
             </Link>
             <Link href={"/edit"}>
               <li
-                className={pathname == "/register" ? "active-link" : ""}
+                className={pathname == "/edit" ? "active-link" : ""}
                 onClick={() => setOpen(false)}
               >
                 Edit Movies
@@ -51,7 +51,7 @@ export const Header = () => {
             </Link>
             <Link href={"/hot"}>
               <li
-                className={pathname == "/login" ? "active-link" : ""}
+                className={pathname == "/hot" ? "active-link" : ""}
                 onClick={() => setOpen(false)}
               >
                 Hot
@@ -59,7 +59,7 @@ export const Header = () => {
             </Link>
             <Link href={"about"}>
               <li
-                className={pathname == "/duvidas" ? "active-link" : ""}
+                className={pathname == "/about" ? "active-link" : ""}
                 onClick={() => setOpen(false)}
               >
                 About

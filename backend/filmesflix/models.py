@@ -4,10 +4,17 @@ class Filmes(models.Model):
 
     OPT_TEMA = (
         ('A', 'Acao'),
+        ('AV', 'Aventura'),
         ('C', 'Comedia'),
         ('D', 'Drama'),
         ('F', 'Ficcao Cientifica'),
-        # Adicione outros temas aqui
+        ('G', 'Guerra'),
+        ('R', 'Romance'),
+        ('T', 'Terror'),
+        ('A', 'Animação'),
+        ('M', 'Musical'),
+        ('CR', 'Crime'),
+        ('HR', 'Historia Real'),
     )
 
     OPT_INDICACAO = (
@@ -25,8 +32,8 @@ class Filmes(models.Model):
     indicacao = models.CharField(max_length=10, choices=OPT_INDICACAO, blank=False, null=False)
     estreia = models.DateField(blank=False, null=False)
     atores_principais = models.CharField(max_length=255, blank=False, null=False)
-    likes = models.IntegerField(blank=False, null=False)
-    deslikes = models.IntegerField(blank=False, null=False)
+    likes = models.IntegerField(blank=False, null=False, default=0)
+    deslikes = models.IntegerField(blank=False, null=False, default=0)
 
     def __str__(self):
         return self.titulo

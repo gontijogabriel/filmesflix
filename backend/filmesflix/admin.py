@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Filmes
+from filmesflix.models import Filmes
 
 class FilmesAdmin(admin.ModelAdmin):
     list_display = ('titulo', 'tema', 'indicacao', 'estreia', 'likes', 'deslikes')

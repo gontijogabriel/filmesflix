@@ -22,10 +22,6 @@ FilmesFlix é um projeto que consome uma API Django para listar filmes e oferece
 
 ## Capturas de Tela
 
-![Tela Inicial](screenshots/home.png)
-![Pesquisa de Filmes](screenshots/search.png)
-![Detalhes do Filme](screenshots/movie-details.png)
-
 ## Como Usar
 
 1. Clone o repositório para sua máquina local.
@@ -33,20 +29,8 @@ FilmesFlix é um projeto que consome uma API Django para listar filmes e oferece
 3. Execute o servidor.
 4. Acesse o aplicativo no seu navegador.
 
-## Contribuições
-
-Contribuições são bem-vindas! Se você deseja melhorar este projeto, siga estas etapas:
-
-1. Faça um fork do repositório.
-2. Crie uma branch para a sua feature: `git checkout -b minha-feature`.
-3. Faça commit das suas alterações: `git commit -m 'Adicionei uma nova funcionalidade'`.
-4. Faça push para a sua branch: `git push origin minha-feature`.
-5. Abra um Pull Request.
-
 ## Licença
 
 Este projeto está licenciado sob a Licença MIT - consulte o arquivo [LICENSE](LICENSE) para obter mais detalhes.
 
 ---
-
-**Nota:** Este é um exemplo de arquivo README em formato Markdown. Certifique-se de personalizar este arquivo com informações específicas do seu projeto, incluindo instruções de configuração, capturas de tela reais e detalhes técnicos específicos do projeto.

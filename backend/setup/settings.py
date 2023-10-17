@@ -28,7 +28,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'filmesflix',
-]
+    'corsheaders',
+]   
 
 
 MIDDLEWARE = [
@@ -39,9 +40,28 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'setup.urls'
+
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000",  # Adicione a origem do seu aplicativo Next.js aqui
+]
+
+CORS_ALLOW_METHODS = [
+    "GET",
+    "POST",
+    "PATH",
+    "PUT",
+    "DELETE",
+]
+
+CORS_ALLOW_HEADERS = [
+    "content-type",
+]
+
+CORS_ALLOW_CREDENTIALS = True  # Se necessário
 
 TEMPLATES = [
     {

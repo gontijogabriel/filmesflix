@@ -20,7 +20,7 @@ export default function Register() {
     };
 
     try {
-      const response = await fetch('http://127.0.0.1:8000/filmes/', requestOptions);
+      const response = await fetch('http://127.0.0.1:8000/filmes/filmes/', requestOptions);
       if (response.ok) {
         // Lidar com a resposta bem-sucedida do Django, se necessário
       } else {

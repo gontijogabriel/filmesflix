@@ -1,17 +1,17 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
+from rest_framework import viewsets
 from django.http import HttpResponse
 from filmesflix.models import Filmes
 from filmesflix.serializers import FilmesSerializer
 
-class FilmesList(APIView):
+class FilmesList(viewsets.ModelViewSet):
+    queryset = Filmes.objects.all()
     serializer_class = FilmesSerializer
 
-    def get(self, request):
-        movies = Filmes.objects.all()
-        movie_serializer = self.serializer_class(movies, many=True)
-        return Response(movie_serializer.data, status=status.HTTP_200_OK)
+class FilmesAdd(APIView):
+    serializer_class = FilmesSerializer
 
     def post(self, request):
         movie_serializer = self.serializer_class(data=request.data)

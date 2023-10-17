@@ -35,18 +35,24 @@ export default function Register() {
       <PageContent>
         <h2>Register</h2>
         <form onSubmit={handleSubmit} method="post">
-        <label htmlFor="nameMovie">Isert the name Movie</label>
-          <input type="text" id="nameMovie" name="nameMovie" />
-        <label htmlFor="descibre">Descibre of Movie</label>
-          <input type="text" id="describe" name="describe" />
-        <label htmlFor="theme">Theme of Movie</label>
-          <input type="text" id="theme" name="theme" />
-        <label htmlFor="indication">Indication for movie</label>
-          <input type="text" id="indication" name="indication" />
-        <label htmlFor="relese">Relese</label>
-          <input type="date" id="relese" name="relese" />
-        <label htmlFor="main">Main actors </label>
-          <input type="text" id="main" name="main" />
+
+        <label htmlFor="titulo">Isert the name Movie</label>
+          <input type="text" id="titulo" name="titulo" />
+        <label htmlFor="descricao">Descibre of Movie</label>
+          <input type="text" id="descricao" name="descricao" />
+        <label htmlFor="tema">Theme of Movie</label>
+          <input type="text" id="tema" name="tema" />
+        <label htmlFor="indicacao">Indication for movie</label>
+          <input type="text" id="indicacao" name="indicacao" />
+        <label htmlFor="estreia">Relese</label>
+          <input type="date" id="estreia" name="estreia" />
+        <label htmlFor="atores_principais">Main actors</label>
+          <input type="text" id="atores_principais" name="atores_principais" />
+        <label htmlFor="likes">likes </label>
+          <input type="number" id="likes" name="likes" />
+        <label htmlFor="deslikes">deslikes</label>
+          <input type="number" id="deslikes" name="deslikes" />
+
           <button type="submit">
             send the form
           </button>

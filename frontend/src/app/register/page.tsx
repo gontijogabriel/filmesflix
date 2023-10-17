@@ -44,7 +44,7 @@ export default function Register() {
         <label htmlFor="indication">Indication for movie</label>
           <input type="text" id="indication" name="indication" />
         <label htmlFor="relese">Relese</label>
-          <input type="text" id="relese" name="relese" />
+          <input type="date" id="relese" name="relese" />
         <label htmlFor="main">Main actors </label>
           <input type="text" id="main" name="main" />
           <button type="submit">

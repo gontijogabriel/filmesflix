@@ -47,6 +47,16 @@ export const Header = () => {
                 onClick={() => setOpen(false)}
               >
                 Edit Movies
+
+              </li>
+            </Link>
+            <Link href={"/movies"}>
+              <li
+                className={pathname == "/movies" ? "active-link" : ""}
+                onClick={() => setOpen(false)}
+              >
+                All Movies
+
               </li>
             </Link>
             <Link href={"/hot"}>

@@ -32,8 +32,16 @@ class Filmes(models.Model):
     indicacao = models.CharField(max_length=10, choices=OPT_INDICACAO, blank=False, null=False)
     estreia = models.DateField(blank=False, null=False)
     atores_principais = models.CharField(max_length=255, blank=False, null=False)
+    imagem = models.ImageField(upload_to='filmes/', default='default_image.jpg')
+
+    def __str__(self):
+        return self.titulo
+    
+
+class LikeDeslikes(models.Model):
+    id_filme = models.ForeignKey(Filmes, on_delete=models.CASCADE)
     likes = models.IntegerField(blank=False, null=False, default=0)
     deslikes = models.IntegerField(blank=False, null=False, default=0)
 
     def __str__(self):
-        return self.titulo
+        return self.id_filme

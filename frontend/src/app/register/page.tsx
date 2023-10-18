@@ -7,7 +7,7 @@ export default function Register() {
     const form = e.target;
     const formData = new FormData(form);
     const jsonData = {};
-    formData.forEach((value, key) => {
+    formData.forEach((value, key:) => {
       jsonData[key] = value;
       console.log(jsonData)
     });

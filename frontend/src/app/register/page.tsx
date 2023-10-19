@@ -20,7 +20,7 @@ export default function Register() {
     };
 
     try {
-      const response = await fetch('http://127.0.0.1:8000/filmes/filmes/', requestOptions);
+      const response = await fetch('http://127.0.0.1:8000/api/filmes/', requestOptions);
       if (response.ok) {
         // Lidar com a resposta bem-sucedida do Django, se necessário
       } else {
@@ -36,28 +36,28 @@ export default function Register() {
         <h2>Register</h2>
         <form onSubmit={handleSubmit} method="post">
 
-        <label htmlFor="titulo">Isert the name Movie</label>
+          <label htmlFor="titulo">Isert the name Movie</label>
           <input type="text" id="titulo" name="titulo" />
-        <label htmlFor="descricao">Descibre of Movie</label>
+          <label htmlFor="descricao">Descibre of Movie</label>
           <input type="text" id="descricao" name="descricao" />
-        <label htmlFor="tema">Theme of Movie</label>
+          <label htmlFor="tema">Theme of Movie</label>
           <input type="text" id="tema" name="tema" />
-        <label htmlFor="indicacao">Indication for movie</label>
+          <label htmlFor="indicacao">Indication for movie</label>
           <input type="text" id="indicacao" name="indicacao" />
-        <label htmlFor="estreia">Relese</label>
+          <label htmlFor="estreia">Relese</label>
           <input type="date" id="estreia" name="estreia" />
-        <label htmlFor="atores_principais">Main actors</label>
+          <label htmlFor="atores_principais">Main actors</label>
           <input type="text" id="atores_principais" name="atores_principais" />
-        <label htmlFor="likes">likes </label>
+          <label htmlFor="likes">likes </label>
           <input type="number" id="likes" name="likes" />
-        <label htmlFor="deslikes">deslikes</label>
+          <label htmlFor="deslikes">deslikes</label>
           <input type="number" id="deslikes" name="deslikes" />
 
           <button type="submit">
             send the form
           </button>
         </form>
-        
+
       </PageContent>
     </PageContainer>
   );

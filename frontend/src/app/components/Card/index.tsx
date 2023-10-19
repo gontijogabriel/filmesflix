@@ -16,7 +16,6 @@ export const Card = ({ img, titulo, descricao, tema, estreia, indicacao }: CardP
   return (
     <CardContainer>
       <img src={`${img}`} alt="nada" />
-      {console.log(img)}
       <CardContent>
         <h2>{titulo}</h2>
         <p>{descricao}</p>

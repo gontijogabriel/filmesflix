@@ -13,7 +13,7 @@ export const MovieContent = styled.div`
   width: 100%;
   margin: 0 auto;
   align-items: center;
-  justify-content: center;
+  justify-content: space-around;
   flex-wrap: wrap;
   display: flex;
 `

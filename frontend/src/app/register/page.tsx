@@ -41,9 +41,9 @@ export default function Register() {
       const response = await fetch('http://127.0.0.1:8000/api/filmes/', requestOptions);
       console.log(form.data)
       if (response.ok) {
-        // Lidar com a resposta bem-sucedida do Django, se necessário
+        <h2>Card Criado Com Sucesso</h2>
       } else {
-        // Lidar com erros de resposta, se necessário
+        <h2>Deu RUin</h2>
       }
     } catch (error) {
       console.error('Erro ao enviar a solicitação:', error);

@@ -1,12 +1,8 @@
 from rest_framework import serializers
-from filmesflix.models import Filmes, LikeDeslikes
+from filmesflix.models import Filmes
 
 class FilmesSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Filmes
-        fields = ["id","titulo","descricao","tema","indicacao","estreia","atores_principais","imagem"]
+        fields = ["id","titulo","descricao","tema","indicacao","estreia","atores_principais","url_imagem","likes","deslikes"]
 
-class FilmesLikesDeslikesSerializer(serializers.HyperlinkedModelSerializer):
-    class Meta:
-        model = LikeDeslikes
-        fields = '__all__'

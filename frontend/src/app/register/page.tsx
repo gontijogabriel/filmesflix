@@ -39,6 +39,7 @@ export default function Register() {
 
     try {
       const response = await fetch('http://127.0.0.1:8000/api/filmes/', requestOptions);
+      console.log(form.data)
       if (response.ok) {
         // Lidar com a resposta bem-sucedida do Django, se necessário
       } else {
@@ -60,8 +61,8 @@ export default function Register() {
           <textarea name="descricao" id="descricao" cols={30} rows={10}>
             digita aqui
           </textarea>
-          <label htmlFor="temas">Escola um tema:</label>
-          <select name="temas" id="temas">
+          <label htmlFor="tema">Escola um tema:</label>
+          <select name="tema" id="tema">
             <option value="Acao">Ação</option>
             <option value="Aventura">Aventura</option>
             <option value="Comedia">Comédia</option>
@@ -89,8 +90,8 @@ export default function Register() {
           <input type="date" id="estreia" name="estreia" />
           <label htmlFor="atores_principais">Main actors</label>
           <input type="text" id="atores_principais" name="atores_principais" />
-          <label htmlFor="imagem">Link imagem para o filme </label>
-          <input type="text" id="imagem" name="imagem" />
+          <label htmlFor="url_imagem">Link imagem para o filme </label>
+          <input type="text" id="url_imagem" name="url_imagem" />
 
 
           <button type="submit">

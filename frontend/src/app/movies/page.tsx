@@ -25,7 +25,7 @@ export default function Movies() {
     <MoviesContainer>
       <MovieContent>
 
-        {movieData ? movieData.map(({id, titulo, descricao, tema, indicacao, estreia, imagem}) => {
+        {movieData.length > 0 ? movieData.map(({id, titulo, descricao, tema, indicacao, estreia, imagem}) => {
           return (
             <Card
               key={id}

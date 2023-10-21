@@ -5,5 +5,5 @@ from filmesflix.views import FilmesList
 app_name = 'filmesflix'
 
 urlpatterns = [
-    path('filmes/', FilmesList.as_view(actions={'get': 'list', 'post': 'create'}), name='filmes-list'),
+    path('filmes/', FilmesList.as_view(actions={'get': 'list', 'post': 'create', 'put': 'update'}), name='filmes-list'),  # Adicione as ações 'put' e 'patch'
 ]

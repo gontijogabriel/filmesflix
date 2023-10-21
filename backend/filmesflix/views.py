@@ -8,7 +8,7 @@ from filmesflix.serializers import FilmesSerializer
 
 class FilmesList(viewsets.ModelViewSet):
     """
-    Uma visualização que fornece ação GET
+    Uma visualização que permite ações GET, POST e PUT.
     """
     queryset = Filmes.objects.all()
     serializer_class = FilmesSerializer
@@ -16,13 +16,8 @@ class FilmesList(viewsets.ModelViewSet):
     
     action_to_serializer = {
         'get': 'list',
+        'post': 'create',
+        'put': 'update',
     }
     
     search_fields = ['id']
-
-    def get(self, request, *args, **kwargs):
-        queryset = self.filter_queryset(self.get_queryset())
-        
-        serializer = self.get_serializer(queryset, many=True)
-        return Response(serializer.data)
-

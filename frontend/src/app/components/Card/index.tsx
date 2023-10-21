@@ -1,5 +1,10 @@
 /* eslint-disable @next/next/no-img-element */
 import { CardContainer, CardContent } from "./styled";
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
+import Modal from '@mui/material/Modal';
+import { useMyContext } from "@/app/context/MyContext";
 
 export interface CardProps {
   id: string
@@ -10,62 +15,19 @@ export interface CardProps {
   estreia: string;
   url_imagem: string;
   atores_principais: string;
-  reload: () => void;
+  deletedCard: () => void
+  setId: (id: number) => void
 }
 
 
-export const Card = ({ id, atores_principais, url_imagem, titulo, descricao, tema, estreia, indicacao, reload }: CardProps) => {
-  const deleteCard = async () => {
-    try {
-      const response = await fetch(`http://127.0.0.1:8000/api/filmes/${id}/`, {
-        method: 'DELETE',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      });
-
-      if (response.status === 204) {
-        // A exclusão foi bem-sucedida, você pode realizar alguma ação aqui
-        // Por exemplo, atualizar o estado da sua aplicação para refletir a exclusão
-        reload()
-      } else {
-        console.log('Deu Ruim Aqui meu Bom ')
-      }
-    } catch (error) {
-      console.error('Erro ao excluir o card:', error);
-    }
+export const Card = ({ id, atores_principais, url_imagem, titulo, descricao, tema, estreia, indicacao, deletedCard, setId }: CardProps) => {
+  const { isActived, data, toogleActived, updateData } = useMyContext();
+  const editCard = () => {
+    setId(id)
+    toogleActived(true)
   }
-  const updateCard = async () => {
-    try {
-      const updateData = {
-        titulo: `${id}`,
-        descricao: `${id}`,
-        tema: "Acao",
-        indicacao: "Livre",
-        estreia: "2023-10-21",
-        atores_principais: `${id}`,
-        url_imagem: `${id}`,
-      }
 
-      const response = await fetch(`http://127.0.0.1:8000/api/filmes/${id}/`, {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(updateData)
-      });
 
-      if (response.status === 200) {
-        // A exclusão foi bem-sucedida, você pode realizar alguma ação aqui
-        // Por exemplo, atualizar o estado da sua aplicação para refletir a exclusão
-        reload()
-      } else {
-        console.log('Deu Ruim Aqui meu Bom ')
-      }
-    } catch (error) {
-      console.error('Erro ao atualizar o card o card:', error);
-    }
-  }
   return (
     <CardContainer>
       <img src={`${url_imagem}`} alt="imagem Filme" />
@@ -81,14 +43,14 @@ export const Card = ({ id, atores_principais, url_imagem, titulo, descricao, tem
           </span>
         </div>
         <div>
-          <button onClick={updateCard}>Edit Card</button>
+          <button onClick={editCard}>Edit Card</button>
 
-          <button onClick={deleteCard}>Delete Card</button>
+          <button onClick={() => deletedCard(id)}>Delete Card</button>
 
 
         </div>
       </CardContent>
 
-    </CardContainer>
+    </CardContainer >
   )
 }

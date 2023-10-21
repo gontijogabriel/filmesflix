@@ -20,27 +20,36 @@ export const Footer = () => {
           <h4>About Team</h4>
           <a href="#">Gabriel</a>
           <a href="#">Elias</a>
+          <a href="#">Pigurito</a>
         </div>
 
         <div className="More">
           <h4>Social</h4>
           <a href="#">Gabriel</a>
           <a href="#">Elias</a>
+          <a href="#">Pigurito</a>
+
         </div>
         <div className="More">
           <h4>Social</h4>
           <a href="#">Gabriel</a>
           <a href="#">Elias</a>
+          <a href="#">Pigurito</a>
+
         </div>
         <div className="More">
           <h4>Social</h4>
           <a href="#">Gabriel</a>
           <a href="#">Elias</a>
+          <a href="#">Pigurito</a>
+
         </div>
         <div className="More">
           <h4>Social</h4>
           <a href="#">Gabriel</a>
           <a href="#">Elias</a>
+          <a href="#">Pigurito</a>
+
         </div>
       </FooterContent>
     </FooterContainer>

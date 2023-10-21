@@ -1,34 +1,44 @@
 'use client'
-import { SyntheticEvent } from "react";
+
+import { SyntheticEvent, useEffect, useState } from "react";
 import { PageContainer, PageContent } from "../styles/PageStyles";
+import { useRouter } from "next/router";
+
 interface FormState {
   titulo: string;
   descricao: string;
   temas: string;
-  indicacao:string;
+  indicacao: string;
   estreia: string;
   atores_principais: string;
   imagem: string;
 }
 
 export default function Register() {
-  const initialFormState: FormState ={
-    titulo:"",
-    descricao:"",
+ 
+
+  const [showSuccessMessage, setShowSuccessMessage] = useState<boolean>(false);
+  const router = useRouter();
+  const initialFormState: FormState = {
+    titulo: "",
+    descricao: "",
     temas: "",
-    indicacao:"",
-    estreia:"",
-    atores_principais:"",
+    indicacao: "",
+    estreia: "",
+    atores_principais: "",
     imagem: "",
-  }
+  };
+
   const handleSubmit = async (e: SyntheticEvent) => {
     e.preventDefault();
     const form = e.target as HTMLFormElement;
     const formData = new FormData(form);
-    const jsonData : FormState = {} as FormState;
+    const jsonData: FormState = {} as FormState;
+
     formData.forEach((value, key) => {
       jsonData[key as keyof FormState] = value as string;
     });
+
     const requestOptions = {
       method: 'POST',
       headers: {
@@ -39,22 +49,30 @@ export default function Register() {
 
     try {
       const response = await fetch('http://127.0.0.1:8000/api/filmes/', requestOptions);
-      console.log(form.data)
       if (response.ok) {
-        <h2>Card Criado Com Sucesso</h2>
+        setShowSuccessMessage(true);
       } else {
-        <h2>Deu RUin</h2>
+        console.log('Deu Ruim');
       }
     } catch (error) {
       console.error('Erro ao enviar a solicitação:', error);
     }
   };
+
+  useEffect(() => {
+    if (showSuccessMessage) {
+      setTimeout(() => {
+        router.push('/movies');
+      }, 2000);
+    }
+  }, [showSuccessMessage, router]);
+
+
   return (
     <PageContainer>
       <PageContent>
         <h2>Register</h2>
         <form onSubmit={handleSubmit} method="post">
-
           <label htmlFor="titulo">Isert the name Movie</label>
           <input type="text" id="titulo" name="titulo" />
           <label htmlFor="descricao">Descibre of Movie</label>
@@ -99,6 +117,12 @@ export default function Register() {
           </button>
         </form>
 
+        {showSuccessMessage && (
+          <div>
+            <h2>Card Registrado Com Sucesso</h2>
+            <p>Great, the card is now registered!</p>
+          </div>
+        )}
       </PageContent>
     </PageContainer>
   );

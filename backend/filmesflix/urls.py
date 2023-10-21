@@ -1,9 +1,10 @@
 from django.urls import path, include
-from rest_framework import routers
-from filmesflix.views import FilmesList
+from rest_framework.routers import DefaultRouter
+from filmesflix.views import FilmesViewSet
 
-app_name = 'filmesflix'
+router = DefaultRouter()
+router.register(r'filmes', FilmesViewSet)
 
 urlpatterns = [
-    path('filmes/', FilmesList.as_view(actions={'get': 'list', 'post': 'create', 'put': 'update'}), name='filmes-list'),  # Adicione as ações 'put' e 'patch'
+    path('api/', include(router.urls)),
 ]

@@ -2,7 +2,7 @@
 
 import { SyntheticEvent, useEffect, useState } from "react";
 import { PageContainer, PageContent } from "../styles/PageStyles";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 
 interface FormState {
   titulo: string;
@@ -15,10 +15,10 @@ interface FormState {
 }
 
 export default function Register() {
+  const router = useRouter();
  
 
   const [showSuccessMessage, setShowSuccessMessage] = useState<boolean>(false);
-  const router = useRouter();
   const initialFormState: FormState = {
     titulo: "",
     descricao: "",

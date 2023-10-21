@@ -1,6 +1,7 @@
 import { title } from "process";
 import { CardContainer, CardContent } from "./styled";
 import Image from "next/image";
+import Link from "next/link";
 
 export interface CardProps {
   img: string;
@@ -12,7 +13,7 @@ export interface CardProps {
 }
 
 
-export const Card = ({ img, titulo, descricao, tema, estreia, indicacao }: CardProps) => {
+export const Card = ({ id,img, titulo, descricao, tema, estreia, indicacao }: CardProps) => {
   return (
     <CardContainer>
       <img src={`${img}`} alt="nada" />
@@ -27,6 +28,9 @@ export const Card = ({ img, titulo, descricao, tema, estreia, indicacao }: CardP
             {estreia}
           </span>
         </div>
+        <Link href={`/edit${id}`}>
+        <button>Edit Card</button>
+        </Link>
       </CardContent>
 
     </CardContainer>

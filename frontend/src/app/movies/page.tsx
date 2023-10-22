@@ -23,7 +23,7 @@ export default function Movies() {
       console.error('Erro ao buscar os filmes:', error);
     }
   };
-  const updateCard = async (idEdit: string, data = {}, numberFild) => {
+  const updateCard = async (idEdit: string, data = {}, numberFild:string) => {
 
     try {
       const response = await fetch(`http://127.0.0.1:8000/api/filmes/${idEdit}/`, {
@@ -34,7 +34,7 @@ export default function Movies() {
         body: JSON.stringify(data)
       });
   
-      if (response.status == 200) {
+      if (response.status === 200) {
         // A atualização foi bem-sucedida, agora busque os dados atualizados
         await fetchData();
       } else {

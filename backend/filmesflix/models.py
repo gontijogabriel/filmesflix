@@ -34,8 +34,8 @@ class Filmes(models.Model):
     atores_principais = models.CharField(max_length=255, blank=False, null=False)
     url_imagem = models.TextField()
     avaliacao = models.IntegerField(
-        blank=False,
-        null=False, 
+        blank=True,
+        null=True, 
         default=0,
     )
     

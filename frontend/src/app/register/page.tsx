@@ -1,8 +1,16 @@
-'use client'
-
-import { SyntheticEvent, useEffect, useState } from "react";
+import { useClient } from "next-superjson";
+"use client";
+import React, { useState, SyntheticEvent } from "react";
+import {
+  Box,
+  Button,
+  InputLabel,
+  MenuItem,
+  Select,
+  TextField,
+  Typography
+} from "@mui/material";
 import { PageContainer, PageContent } from "../styles/PageStyles";
-import { useRouter } from "next/navigation";
 
 interface FormState {
   titulo: string;
@@ -15,10 +23,7 @@ interface FormState {
 }
 
 export default function Register() {
-  const router = useRouter();
- 
-
-  const [showSuccessMessage, setShowSuccessMessage] = useState<boolean>(false);
+  "use client";
   const initialFormState: FormState = {
     titulo: "",
     descricao: "",
@@ -28,101 +33,142 @@ export default function Register() {
     atores_principais: "",
     imagem: "",
   };
+  const [formData, setFormData] = useState<FormState>(initialFormState);
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
 
   const handleSubmit = async (e: SyntheticEvent) => {
     e.preventDefault();
-    const form = e.target as HTMLFormElement;
-    const formData = new FormData(form);
-    const jsonData: FormState = {} as FormState;
-
-    formData.forEach((value, key) => {
-      jsonData[key as keyof FormState] = value as string;
-    });
-
-    const requestOptions = {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(jsonData),
-    };
-
-    try {
-      const response = await fetch('http://127.0.0.1:8000/api/filmes/', requestOptions);
-      if (response.ok) {
-        setShowSuccessMessage(true);
-      } else {
-        console.log('Deu Ruim');
-      }
-    } catch (error) {
-      console.error('Erro ao enviar a solicitação:', error);
-    }
+    // Lógica de envio do formulário
   };
-
-  useEffect(() => {
-    if (showSuccessMessage) {
-      setTimeout(() => {
-        router.push('/movies');
-      }, 2000);
-    }
-  }, [showSuccessMessage, router]);
-
 
   return (
     <PageContainer>
       <PageContent>
-        <h2>Register</h2>
+      <Typography variant="h4" component="h2" gutterBottom>
+          Cadastro de Filme
+        </Typography>
         <form onSubmit={handleSubmit} method="post">
-          <label htmlFor="titulo">Isert the name Movie</label>
-          <input type="text" id="titulo" name="titulo" />
-          <label htmlFor="descricao">Descibre of Movie</label>
-          <textarea name="descricao" id="descricao" cols={30} rows={10}>
-            digita aqui
-          </textarea>
-          <label htmlFor="tema">Escola um tema:</label>
-          <select name="tema" id="tema">
-            <option value="Acao">Ação</option>
-            <option value="Aventura">Aventura</option>
-            <option value="Comedia">Comédia</option>
-            <option value="Drama">Drama</option>
-            <option value="Ficcao Cientifica">Ficção Cienífica</option>
-            <option value="Guerra">Guerra</option>
-            <option value="Romance">Romance</option>
-            <option value="Terror">Terror</option>
-            <option value="Animacao">Animação</option>
-            <option value="Musical">Musical</option>
-            <option value="Crime">Crime</option>
-            <option value="Historia Real">História Real</option>
+          <Box sx={{ "& > :not(style)": { m: 1 } }}>
+            <TextField
+              fullWidth
+              label="Insira o nome do filme"
+              id="titulo"
+              name="titulo"
+              value={formData.titulo}
+              onChange={handleChange}
+            />
+          </Box>
 
-          </select>
-          <label htmlFor="indicacao">Escolha uma indicação:</label>
-          <select name="indicacao" id="indicacao">
-            <option value="Livre">Livre</option>
-            <option value="10+">10+</option>
-            <option value="12+">12+</option>
-            <option value="14+">14+</option>
-            <option value="16+">16+</option>
-            <option value="18+">18+</option>
-          </select>
-          <label htmlFor="estreia">Relese</label>
-          <input type="date" id="estreia" name="estreia" />
-          <label htmlFor="atores_principais">Main actors</label>
-          <input type="text" id="atores_principais" name="atores_principais" />
-          <label htmlFor="url_imagem">Link imagem para o filme </label>
-          <input type="text" id="url_imagem" name="url_imagem" />
+          <Box sx={{ "& > :not(style)": { m: 1 } }}>
+            <TextField
+              fullWidth
+              multiline
+              rows={3}
+              label="Descrição do filme"
+              id="descricao"
+              name="descricao"
+              value={formData.descricao}
+              onChange={handleChange}
+            />
+          </Box>
 
+          <Box sx={{ "& > :not(style)": { m: 1 } }}>
+            <TextField
+              fullWidth
+              label="Main actors"
+              id="atores_principais"
+              name="atores_principais"
+              value={formData.atores_principais}
+              onChange={handleChange}
+            />
+          </Box>
 
-          <button type="submit">
-            send the form
-          </button>
-        </form>
+          <Box sx={{ "& > :not(style)": { m: 1 } }}>
+            <TextField
+              fullWidth
+              label="Link image for the movie"
+              id="imagem"
+              name="imagem"
+              value={formData.imagem}
+              onChange={handleChange}
+            />
+          </Box>
 
-        {showSuccessMessage && (
-          <div>
-            <h2>Card Registrado Com Sucesso</h2>
-            <p>Great, the card is now registered!</p>
+          <div style={{ display: 'flex' }}>
+          <Box sx={{ "& > :not(style)": { m: 1, width: "auto" } }}>
+          <InputLabel id="temas-label">Data de estreia:</InputLabel>
+            <TextField
+              fullWidth
+              id="estreia"
+              name="estreia"
+              type="date"
+              value={formData.estreia}
+              onChange={handleChange}
+              InputLabelProps={{
+                shrink: true,
+              }}
+            />
+          </Box>
+          
+  <Box sx={{ "& > :not(style)": { m: 1, width: "200px", minWidth: "120px", width: "auto" } }}>
+    <InputLabel id="temas-label">Escolha o tema:</InputLabel>
+    <Select
+      labelId="temas-label"
+      id="temas"
+      name="temas"
+      value={formData.temas}
+      onChange={handleChange}
+    >
+      <MenuItem value=""></MenuItem>
+      <MenuItem value="Acao">Ação</MenuItem>
+      <MenuItem value="Aventura">Aventura</MenuItem>
+      <MenuItem value="Comedia">Comédia</MenuItem>
+      <MenuItem value="Drama">Drama</MenuItem>
+      <MenuItem value="Ficcao Cientifica">Ficção Científica</MenuItem>
+      <MenuItem value="Guerra">Guerra</MenuItem>
+      <MenuItem value="Romance">Romance</MenuItem>
+      <MenuItem value="Terror">Terror</MenuItem>
+      <MenuItem value="Animacao">Animação</MenuItem>
+      <MenuItem value="Musical">Musical</MenuItem>
+      <MenuItem value="Crime">Crime</MenuItem>
+      <MenuItem value="Historia Real">História Real</MenuItem>
+      {/* Adicione mais itens de menu conforme necessário */}
+    </Select>
+  </Box>
+
+  <Box sx={{ "& > :not(style)": { m: 1, width: "200px", minWidth: "11rem", width: "auto" } }}>
+    <InputLabel id="indicacao-label">Classificação indicativa:</InputLabel>
+    <Select
+      labelId="indicacao-label"
+      id="indicacao"
+      name="indicacao"
+      value={formData.indicacao}
+      onChange={handleChange}
+    >
+      <MenuItem value=""></MenuItem>
+      <MenuItem value="Livre">Livre</MenuItem>
+      <MenuItem value="10+">10+</MenuItem>
+      <MenuItem value="12+">12+</MenuItem>
+      <MenuItem value="14+">14+</MenuItem>
+      <MenuItem value="16+">16+</MenuItem>
+      <MenuItem value="18+">18+</MenuItem>
+      {/* Adicione mais itens de menu conforme necessário */}
+    </Select>
+  </Box>
+
           </div>
-        )}
+          <Box sx={{ m: 1 }}>
+        <Button variant="contained" color="success">
+          Cadastrar
+        </Button>
+      </Box>
+        </form>
       </PageContent>
     </PageContainer>
   );

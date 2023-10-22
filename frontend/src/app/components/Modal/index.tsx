@@ -28,11 +28,22 @@ export const BasicModal = ({ updateCard, idEdit }) => {
     const newData = {};
 
     formData.forEach((value, key) => {
-      newData[key] = value;
+      if (value.trim() !== "") {
+
+        newData[key] = value;
+      }
     })
+    if (Object.keys(newData).length === 0) {
+      // Nenhum campo preenchido para atualização, você pode exibir uma mensagem ou tomar a ação apropriada.
+      console.error('Nenhum campo preenchido para atualização');
+      return;
+    }
     try {
       // Aguarde a resolução da promessa retornada por updateCard
-      await updateCard(idEdit, newData);
+      const numberOfFields = Object.keys(newData).length;
+      await updateCard(idEdit, newData, numberOfFields);
+      console.log(newData)
+      console.log(`Número de campos preenchidos: ${numberOfFields}`);
 
       // Quando a promessa é resolvida com sucesso, feche o modal
       toogleActived(false);
@@ -55,10 +66,11 @@ export const BasicModal = ({ updateCard, idEdit }) => {
           <input type="text" id="titulo" name="titulo" />
           <label htmlFor="descricao">Descibre of Movie</label>
           <textarea name="descricao" id="descricao" cols={30} rows={10}>
-            digita aqui
+
           </textarea>
           <label htmlFor="tema">Escola um tema:</label>
           <select name="tema" id="tema">
+            <option value=""></option>
             <option value="Acao">Ação</option>
             <option value="Aventura">Aventura</option>
             <option value="Comedia">Comédia</option>
@@ -75,6 +87,7 @@ export const BasicModal = ({ updateCard, idEdit }) => {
           </select>
           <label htmlFor="indicacao">Escolha uma indicação:</label>
           <select name="indicacao" id="indicacao">
+            <option value=""></option>
             <option value="Livre">Livre</option>
             <option value="10+">10+</option>
             <option value="12+">12+</option>

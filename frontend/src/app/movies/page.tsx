@@ -5,6 +5,7 @@ import { Card } from "../components/Card";
 import { MovieContent, MoviesContainer } from "./styled";
 import { useMyContext } from "../context/MyContext";
 import { BasicModal } from "../components/Modal";
+import { METHODS } from "http";
 
 export default function Movies() {
   const [movieData, setMovieData] = useState([]);
@@ -22,26 +23,25 @@ export default function Movies() {
       console.error('Erro ao buscar os filmes:', error);
     }
   };
-  const updateCard = async (idEdit: string,data={}) => {
+  const updateCard = async (idEdit: string, data = {}, numberFild) => {
 
     try {
       const response = await fetch(`http://127.0.0.1:8000/api/filmes/${idEdit}/`, {
-        method: 'PUT',
+        method: numberFild === '7' ? 'PUT' : 'PATCH',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(data)
       });
-
-      if (response.status === 200) {
-        // A exclusão foi bem-sucedida, você pode realizar alguma ação aqui
-        // Por exemplo, atualizar o estado da sua aplicação para refletir a exclusão
-        fetchData()
+  
+      if (response.status == 200) {
+        // A atualização foi bem-sucedida, agora busque os dados atualizados
+        await fetchData();
       } else {
-        console.log('Deu Ruim Aqui meu Bom ')
+        console.log('Algo deu errado durante a atualização.');
       }
     } catch (error) {
-      console.error('Erro ao atualizar o card o card:', error);
+      console.error('Erro ao atualizar o card:', error);
     }
   }
   const deleteCard = async (id: string) => {

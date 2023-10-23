@@ -1,6 +1,6 @@
 import { useClient } from "next-superjson";
 "use client";
-import React, { useState, SyntheticEvent } from "react";
+import React, { useState, SyntheticEvent, useEffect } from "react";
 import {
   Box,
   Button,
@@ -11,6 +11,7 @@ import {
   Typography
 } from "@mui/material";
 import { PageContainer, PageContent } from "../styles/PageStyles";
+import { useRouter } from "next/router";
 
 interface FormState {
   titulo: string;
@@ -23,6 +24,8 @@ interface FormState {
 }
 
 export default function Register() {
+  const router = useRouter();
+  const [showSuccessMessage, setShowSuccessMessage] = useState<boolean>(false);
   "use client";
   const initialFormState: FormState = {
     titulo: "",
@@ -44,9 +47,41 @@ export default function Register() {
 
   const handleSubmit = async (e: SyntheticEvent) => {
     e.preventDefault();
-    // Lógica de envio do formulário
+    const form = e.target as HTMLFormElement;
+    const formData = new FormData(form);
+    const jsonData: FormState = {} as FormState;
+
+    formData.forEach((value, key) => {
+      jsonData[key as keyof FormState] = value as string;
+    });
+
+    const requestOptions = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(jsonData),
+    };
+
+    try {
+      const response = await fetch('http://127.0.0.1:8000/api/filmes/', requestOptions);
+      if (response.ok) {
+        setShowSuccessMessage(true);
+      } else {
+        console.log('Deu Ruim');
+      }
+    } catch (error) {
+      console.error('Erro ao enviar a solicitação:', error);
+    }
   };
 
+  useEffect(() => {
+    if (showSuccessMessage) {
+      setTimeout(() => {
+        router.push('/movies');
+      }, 2000);
+    }
+  }, [showSuccessMessage, router]);
   return (
     <PageContainer>
       <PageContent>
@@ -169,6 +204,12 @@ export default function Register() {
         </Button>
       </Box>
         </form>
+        {showSuccessMessage && (
+          <div>
+            <h2>Card Registrado Com Sucesso</h2>
+            <p>Great, the card is now registered!</p>
+          </div>
+        )}
       </PageContent>
     </PageContainer>
   );

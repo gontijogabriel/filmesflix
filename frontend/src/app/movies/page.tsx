@@ -5,11 +5,10 @@ import { Card } from "../components/Card";
 import { MovieContent, MoviesContainer } from "./styled";
 import { useMyContext } from "../context/MyContext";
 import { BasicModal } from "../components/Modal";
-import { METHODS } from "http";
 
 export default function Movies() {
   const [movieData, setMovieData] = useState([]);
-  const [idEdit, setIdEdit] = useState(0)
+  const [idEdit, setIdEdit] = useState('')
   const { isActived, data, toogleActived, updateData } = useMyContext();
 
   const fetchData = async () => {
@@ -17,13 +16,12 @@ export default function Movies() {
       const req = await fetch('http://127.0.0.1:8000/api/filmes/');
       const reqJson = await req.json();
       setMovieData(reqJson);
-      console.log(reqJson)
     } catch (error) {
 
       console.error('Erro ao buscar os filmes:', error);
     }
   };
-  const updateCard = async (idEdit: string, data = {}, numberFild) => {
+  const updateCard = async (idEdit: string, data = {}, numberFild: string) => {
 
     try {
       const response = await fetch(`http://127.0.0.1:8000/api/filmes/${idEdit}/`, {
@@ -33,8 +31,8 @@ export default function Movies() {
         },
         body: JSON.stringify(data)
       });
-  
-      if (response.status == 200) {
+
+      if (response.status === 200) {
         // A atualização foi bem-sucedida, agora busque os dados atualizados
         await fetchData();
       } else {

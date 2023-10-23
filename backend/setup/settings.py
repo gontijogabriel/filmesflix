@@ -75,16 +75,17 @@ CORS_ALLOWED_ORIGINS = [
 CORS_ALLOW_METHODS = [
     "GET",
     "POST",
-    "PATH",
-    "PUT",
+    "PATCH",
+    "PUT",  # Certifique-se de incluir "PATCH" e "PUT"
     "DELETE",
+    "OPTIONS",
 ]
 
 CORS_ALLOW_HEADERS = [
     "content-type",
 ]
 
-CORS_ALLOW_CREDENTIALS = True  # Se necessário
+# CORS_ALLOW_CREDENTIALS = True  # Se necessário
 
 TEMPLATES = [
     {

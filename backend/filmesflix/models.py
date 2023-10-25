@@ -1,6 +1,9 @@
 from django.db import models
 
 class Filmes(models.Model):
+    class Meta:
+        verbose_name_plural = "filmes"
+
 
     TEMAS = [
         ('Acao', 'Acao'),
@@ -38,6 +41,7 @@ class Filmes(models.Model):
         null=True, 
         default=0,
     )
+    total_votos = models.IntegerField(blank=True, null=True, default=0)
     
     def __str__(self):
         return self.titulo

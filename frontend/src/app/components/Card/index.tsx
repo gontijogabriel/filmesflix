@@ -5,6 +5,7 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import { useMyContext } from "@/app/context/MyContext";
+import Link from "next/link";
 
 export interface CardProps {
   id: string
@@ -45,7 +46,14 @@ export const Card = ({ id, atores_principais, url_imagem, titulo, descricao, tem
         <div>
           <button onClick={editCard}>Edit Card</button>
 
+
           <button onClick={() => deletedCard(id)}>Delete Card</button>
+          <Link href={`${id}`}>
+          <button>
+            teste page
+            
+            </button>  
+          </Link>
 
 
         </div>

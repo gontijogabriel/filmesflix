@@ -9,7 +9,6 @@ import { BasicModal } from "./components/Modal";
 
 export default function Home() {
   const { isActived, data, toogleActived, updateData } = useMyContext();
-
   const [movieDataone, setMovieDataone] = useState([]);
   const [searchValue, setSearchValue] = useState('');
   const [movieData, setMovieData] = useState([]);
@@ -93,7 +92,6 @@ export default function Home() {
   }
 
   useEffect(() => {
-    console.log(movieData);
   }, [movieData]);
   const handleEnterKey = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') {

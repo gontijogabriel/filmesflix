@@ -6,6 +6,12 @@ import { useMyContext } from "./context/MyContext";
 import { BasicModal } from "./components/Modal";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
+import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import 'swiper/css/scrollbar';
+import { Cube } from "phosphor-react";
 
 
 export default function Home() {
@@ -158,6 +164,13 @@ export default function Home() {
         <Swiper
           spaceBetween={50}
           slidesPerView={1}
+          effect="fade"
+          allowSlideNext={true}
+          loop={true}
+          direction={"horizontal"}
+          autoplay={{ delay: 1000 }}
+          modules={[Navigation, Pagination, Scrollbar, A11y]}
+          pagination={{ clickable: true }}
           onSlideChange={() => console.log('slide change')}
           onSwiper={(swiper) => console.log(swiper)}
         >
@@ -179,6 +192,6 @@ export default function Home() {
           ))}
         </Swiper>
       </PageContent>
-    </PageContainer>
+    </PageContainer >
   );
 }

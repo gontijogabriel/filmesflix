@@ -4,17 +4,32 @@ import { PageContainer, PageContent } from "./styles/PageStyles";
 import { Card, CardProps } from "./components/Card";
 import { useMyContext } from "./context/MyContext";
 import { BasicModal } from "./components/Modal";
-
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
 
 
 export default function Home() {
   const { isActived, data, toogleActived, updateData } = useMyContext();
   const [movieDataone, setMovieDataone] = useState([]);
+  const [dataCarrosel, setDataCarrosel] = useState([]);
   const [searchValue, setSearchValue] = useState('');
   const [movieData, setMovieData] = useState([]);
   const [idEdit, setIdEdit] = useState('')
 
-
+  const fetchDataForCarrosel = async () => {
+    try {
+      const req = await fetch('http://127.0.0.1:8000/api/filmes/');
+      const reqJson = await req.json();
+      const firstThreeMovies = reqJson.slice(0, 4); // Alterado para pegar os primeiros 3 objetos.
+      setDataCarrosel(firstThreeMovies);
+    } catch (error) {
+      console.error('Erro ao buscar os filmes para o carrossel:', error);
+    }
+  };
+  useEffect(() => {
+    fetchDataForCarrosel()
+  }, [])
+  console.log(dataCarrosel)
   const handleSearchValue = (e: ChangeEvent<HTMLInputElement>) => {
     setSearchValue(e.target.value);
   }
@@ -140,6 +155,29 @@ export default function Home() {
           ))
         )}
         {isActived && <BasicModal updateCard={updateCard} idEdit={idEdit} />}
+        <Swiper
+          spaceBetween={50}
+          slidesPerView={1}
+          onSlideChange={() => console.log('slide change')}
+          onSwiper={(swiper) => console.log(swiper)}
+        >
+          {dataCarrosel.map(({ id, titulo, descricao, tema, indicacao, estreia, url_imagem }: CardProps) => (
+            <SwiperSlide key={id}>
+              <Card
+                atores_principais='none'
+                id={id}
+                descricao={descricao}
+                titulo={titulo}
+                tema={tema}
+                indicacao={indicacao}
+                estreia={estreia}
+                url_imagem={url_imagem}
+                deletedCard={() => deleteCard(id)}
+                setId={setIdEdit}
+              />
+            </SwiperSlide>
+          ))}
+        </Swiper>
       </PageContent>
     </PageContainer>
   );

@@ -18,10 +18,11 @@ export interface CardProps {
   atores_principais: string;
   deletedCard: (id: string) => void
   setId: (id: string) => void
+  variable: 'modal' | 'default'
 }
 
 
-export const Card = ({ id, atores_principais, url_imagem, titulo, descricao, tema, estreia, indicacao, deletedCard, setId }: CardProps) => {
+export const Card = ({ id, atores_principais, url_imagem, titulo, descricao, tema, estreia, indicacao, deletedCard, setId, variable }: CardProps) => {
   const { isActived, data, toogleActived, updateData } = useMyContext();
   const editCard = () => {
     setId(id)
@@ -30,9 +31,9 @@ export const Card = ({ id, atores_principais, url_imagem, titulo, descricao, tem
 
 
   return (
-    <CardContainer>
+    <CardContainer variable={variable}>
       <img src={`${url_imagem}`} alt="imagem Filme" />
-      <CardContent>
+      <CardContent variable={variable}>
         <h2>{titulo}</h2>
         <p>{descricao}</p>
         <h3>{tema}</h3>
@@ -49,10 +50,10 @@ export const Card = ({ id, atores_principais, url_imagem, titulo, descricao, tem
 
           <button onClick={() => deletedCard(id)}>Delete Card</button>
           <Link href={`${id}`}>
-          <button>
-            teste page
-            
-            </button>  
+            <button>
+              teste page
+
+            </button>
           </Link>
 
 

@@ -14,6 +14,7 @@ import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 import 'swiper/css/effect-creative';
 import { EffectCreative } from 'swiper/modules';
+import { MagnifyingGlass } from "phosphor-react";
 
 
 export default function Home() {
@@ -125,14 +126,17 @@ export default function Home() {
   return (
     <PageContainer>
       <PageContent>
-        <button onClick={handleSearchfetch}>
-          click me
-        </button>
-        <input type="text" name="search" id="search" onChange={handleSearchValue} onKeyDown={handleEnterKey} />
+        <div className="input">
+          <button className="pesquisa" onClick={handleSearchfetch}>
+            <MagnifyingGlass size={25} color="#756e6e" />
+          </button>
+          <input type="text" placeholder="Search you Movie" name="search" id="search" onChange={handleSearchValue} onKeyDown={handleEnterKey} />
+
+        </div>
         <Swiper
           modules={[Navigation, Pagination, Scrollbar, A11y, EffectCoverflow, EffectCreative, Autoplay]}
           spaceBetween={50}
-          slidesPerView={2}
+          slidesPerView={1}
           allowSlideNext={true}
           // effect={'coverflow'}
           // effect={'creative'}
@@ -155,14 +159,16 @@ export default function Home() {
           }}
           loop={true}
           direction={"horizontal"}
-          autoplay={{ delay: 1000 }}
+          autoplay={{ delay: 2000 }}
           pagination={{ clickable: true }}
           onSlideChange={() => console.log('slide change')}
           onSwiper={(swiper) => console.log(swiper)}
         >
+
           {dataCarrosel.map(({ id, titulo, descricao, tema, indicacao, estreia, url_imagem }: CardProps) => (
             <SwiperSlide key={id}>
               <Card
+                variable="modal"
                 atores_principais='none'
                 id={id}
                 descricao={descricao}
@@ -177,24 +183,15 @@ export default function Home() {
             </SwiperSlide>
           ))}
         </Swiper>
+        <div className="cards-content">
 
-        {movieData ? movieData.map(({ id, titulo, descricao, tema, indicacao, estreia, url_imagem }: CardProps) => (
-          <Card
-            atores_principais='none'
-            key={id}
-            id={id}
-            descricao={descricao}
-            titulo={titulo}
-            tema={tema}
-            indicacao={indicacao}
-            estreia={estreia}
-            url_imagem={url_imagem}
-            deletedCard={() => deleteCard(id)}
-            setId={setIdEdit}
-          />
-        )) : (
-          movieDataone.map(({ id, titulo, descricao, tema, indicacao, estreia, url_imagem }) => (
+
+
+
+
+          {movieData ? movieData.map(({ id, titulo, descricao, tema, indicacao, estreia, url_imagem }: CardProps) => (
             <Card
+              variable="default"
               atores_principais='none'
               key={id}
               id={id}
@@ -206,11 +203,28 @@ export default function Home() {
               url_imagem={url_imagem}
               deletedCard={() => deleteCard(id)}
               setId={setIdEdit}
-
             />
-          ))
-        )}
-        {isActived && <BasicModal updateCard={updateCard} idEdit={idEdit} />}
+          )) : (
+            movieDataone.map(({ id, titulo, descricao, tema, indicacao, estreia, url_imagem }) => (
+              <Card
+                variable="default"
+                atores_principais='none'
+                key={id}
+                id={id}
+                descricao={descricao}
+                titulo={titulo}
+                tema={tema}
+                indicacao={indicacao}
+                estreia={estreia}
+                url_imagem={url_imagem}
+                deletedCard={() => deleteCard(id)}
+                setId={setIdEdit}
+
+              />
+            ))
+          )}
+          {isActived && <BasicModal updateCard={updateCard} idEdit={idEdit} />}
+        </div>
 
       </PageContent>
     </PageContainer >

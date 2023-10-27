@@ -6,12 +6,14 @@ import { useMyContext } from "./context/MyContext";
 import { BasicModal } from "./components/Modal";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
-import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
+import { Navigation, Pagination, Scrollbar, A11y, Autoplay } from 'swiper/modules';
+import { EffectCoverflow } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
-import { Cube } from "phosphor-react";
+import 'swiper/css/effect-creative';
+import { EffectCreative } from 'swiper/modules';
 
 
 export default function Home() {
@@ -127,6 +129,54 @@ export default function Home() {
           click me
         </button>
         <input type="text" name="search" id="search" onChange={handleSearchValue} onKeyDown={handleEnterKey} />
+        <Swiper
+          modules={[Navigation, Pagination, Scrollbar, A11y, EffectCoverflow, EffectCreative, Autoplay]}
+          spaceBetween={50}
+          slidesPerView={2}
+          allowSlideNext={true}
+          // effect={'coverflow'}
+          // effect={'creative'}
+          // coverflowEffect={{
+          //   rotate: 50,
+          //   stretch: 0,
+          //   depth: 100,
+          //   modifier: 1,
+          //   slideShadows: true,
+
+          // }}
+          creativeEffect={{
+            prev: {
+              shadow: true,
+              translate: [0, 0, -400],
+            },
+            next: {
+              translate: ['100%', 0, 0],
+            },
+          }}
+          loop={true}
+          direction={"horizontal"}
+          autoplay={{ delay: 1000 }}
+          pagination={{ clickable: true }}
+          onSlideChange={() => console.log('slide change')}
+          onSwiper={(swiper) => console.log(swiper)}
+        >
+          {dataCarrosel.map(({ id, titulo, descricao, tema, indicacao, estreia, url_imagem }: CardProps) => (
+            <SwiperSlide key={id}>
+              <Card
+                atores_principais='none'
+                id={id}
+                descricao={descricao}
+                titulo={titulo}
+                tema={tema}
+                indicacao={indicacao}
+                estreia={estreia}
+                url_imagem={url_imagem}
+                deletedCard={() => deleteCard(id)}
+                setId={setIdEdit}
+              />
+            </SwiperSlide>
+          ))}
+        </Swiper>
 
         {movieData ? movieData.map(({ id, titulo, descricao, tema, indicacao, estreia, url_imagem }: CardProps) => (
           <Card
@@ -161,36 +211,7 @@ export default function Home() {
           ))
         )}
         {isActived && <BasicModal updateCard={updateCard} idEdit={idEdit} />}
-        <Swiper
-          spaceBetween={50}
-          slidesPerView={1}
-          effect="fade"
-          allowSlideNext={true}
-          loop={true}
-          direction={"horizontal"}
-          autoplay={{ delay: 1000 }}
-          modules={[Navigation, Pagination, Scrollbar, A11y]}
-          pagination={{ clickable: true }}
-          onSlideChange={() => console.log('slide change')}
-          onSwiper={(swiper) => console.log(swiper)}
-        >
-          {dataCarrosel.map(({ id, titulo, descricao, tema, indicacao, estreia, url_imagem }: CardProps) => (
-            <SwiperSlide key={id}>
-              <Card
-                atores_principais='none'
-                id={id}
-                descricao={descricao}
-                titulo={titulo}
-                tema={tema}
-                indicacao={indicacao}
-                estreia={estreia}
-                url_imagem={url_imagem}
-                deletedCard={() => deleteCard(id)}
-                setId={setIdEdit}
-              />
-            </SwiperSlide>
-          ))}
-        </Swiper>
+
       </PageContent>
     </PageContainer >
   );

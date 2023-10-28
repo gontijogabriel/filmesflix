@@ -130,7 +130,7 @@ export default function Home() {
           <button className="pesquisa" onClick={handleSearchfetch}>
             <MagnifyingGlass size={25} color="#756e6e" />
           </button>
-          <input type="text" placeholder="Search you Movie" name="search" id="search" onChange={handleSearchValue} onKeyDown={handleEnterKey} />
+          <input type="text" placeholder="Search you Movie" name="search" id="search" onChange={handleSearchValue} className="searchinput" onKeyDown={handleEnterKey} />
 
         </div>
         <Swiper

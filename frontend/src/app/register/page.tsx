@@ -11,7 +11,7 @@ import {
   Typography
 } from "@mui/material";
 import { PageContainer, PageContent } from "../styles/PageStyles";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 
 interface FormState {
   titulo: string;

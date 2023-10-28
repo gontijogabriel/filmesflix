@@ -72,6 +72,7 @@ CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",  # Adicione a origem do seu aplicativo Next.js aqui
 ]
 
+<<<<<<< HEAD
 # CORS_ALLOW_METHODS = [
 #     "OPTIONS",
 #     "GET",
@@ -80,6 +81,16 @@ CORS_ALLOWED_ORIGINS = [
 #     "PUT",
 #     "DELETE",
 # ]
+=======
+CORS_ALLOW_METHODS = [
+    "GET",
+    "POST",
+    "PATCH",
+    "PUT",  # Certifique-se de incluir "PATCH" e "PUT"
+    "DELETE",
+    "OPTIONS",
+]
+>>>>>>> 6a21f71a410928551e14b2ce2a16d426884fec85
 
 # CORS_ALLOW_HEADERS = [
 #     "content-type",

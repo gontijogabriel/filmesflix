@@ -47,7 +47,6 @@ export const CardContent = styled.div<{ variable: 'modal' | 'default' }>`
       flex-direction: column;
       padding: 20px;
       height: 300px;
-      background: red;
       width: 70%;
       justify-content: space-around;
       align-items: center;

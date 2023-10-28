@@ -73,15 +73,6 @@ CORS_ALLOWED_ORIGINS = [
 ]
 
 
-# CORS_ALLOW_METHODS = [
-#     "OPTIONS",
-#     "GET",
-#     "POST",
-#     "PATH",
-#     "PUT",
-#     "DELETE",
-# ]
-
 CORS_ALLOW_METHODS = [
     "GET",
     "POST",

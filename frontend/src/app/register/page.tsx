@@ -8,7 +8,9 @@ import {
   MenuItem,
   Select,
   TextField,
-  Typography
+  Typography,
+  Alert,
+  Stack,
 } from "@mui/material";
 import { PageContainer, PageContent } from "../styles/PageStyles";
 import { useRouter } from "next/navigation";
@@ -16,30 +18,25 @@ import { useRouter } from "next/navigation";
 interface FormState {
   titulo: string;
   descricao: string;
-  temas: string;
+  tema: string;
   indicacao: string;
   estreia: string;
   atores_principais: string;
-  imagem: string;
+  url_imagem: string;
 }
 
 export default function Register() {
   const router = useRouter();
-<<<<<<< HEAD
-=======
-
-
->>>>>>> 6a21f71a410928551e14b2ce2a16d426884fec85
   const [showSuccessMessage, setShowSuccessMessage] = useState<boolean>(false);
   "use client";
   const initialFormState: FormState = {
     titulo: "",
     descricao: "",
-    temas: "",
+    tema: "",
     indicacao: "",
     estreia: "",
     atores_principais: "",
-    imagem: "",
+    url_imagem: "",
   };
   const [formData, setFormData] = useState<FormState>(initialFormState);
 
@@ -49,7 +46,7 @@ export default function Register() {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
-
+console.log(formData)
   const handleSubmit = async (e: SyntheticEvent) => {
     e.preventDefault();
     const form = e.target as HTMLFormElement;
@@ -79,7 +76,6 @@ export default function Register() {
       console.error('Erro ao enviar a solicitação:', error);
     }
   };
-
   useEffect(() => {
     if (showSuccessMessage) {
       setTimeout(() => {
@@ -121,7 +117,7 @@ export default function Register() {
           <Box sx={{ "& > :not(style)": { m: 1 } }}>
             <TextField
               fullWidth
-              label="Main actors"
+              label="Atores principais"
               id="atores_principais"
               name="atores_principais"
               value={formData.atores_principais}
@@ -132,17 +128,17 @@ export default function Register() {
           <Box sx={{ "& > :not(style)": { m: 1 } }}>
             <TextField
               fullWidth
-              label="Link image for the movie"
-              id="imagem"
-              name="imagem"
-              value={formData.imagem}
+              label="foto do filme"
+              id="url_imagem"
+              name="url_imagem"
+              value={formData.url_imagem}
               onChange={handleChange}
             />
           </Box>
 
           <div style={{ display: 'flex' }}>
           <Box sx={{ "& > :not(style)": { m: 1, width: "auto" } }}>
-          <InputLabel id="temas-label">Data de estreia:</InputLabel>
+          <InputLabel id="tema">Data de estreia:</InputLabel>
             <TextField
               fullWidth
               id="estreia"
@@ -156,13 +152,13 @@ export default function Register() {
             />
           </Box>
           
-  <Box sx={{ "& > :not(style)": { m: 1, width: "200px", minWidth: "120px", width: "auto" } }}>
-    <InputLabel id="temas-label">Escolha o tema:</InputLabel>
+  <Box sx={{ "& > :not(style)": { m: 1, width: "200px", minWidth: "80px", width: "auto" } }}>
+    <InputLabel id="tema">Escolha o tema:</InputLabel>
     <Select
-      labelId="temas-label"
-      id="temas"
-      name="temas"
-      value={formData.temas}
+      labelId="tema"
+      id="tema"
+      name="tema"
+      value={formData.tema}
       onChange={handleChange}
     >
       <MenuItem value=""></MenuItem>
@@ -204,16 +200,16 @@ export default function Register() {
 
           </div>
           <Box sx={{ m: 1 }}>
-        <Button variant="contained" color="success">
+        <Button type="submit" variant="contained" color="success"
+      >
           Cadastrar
         </Button>
       </Box>
         </form>
         {showSuccessMessage && (
-          <div>
-            <h2>Card Registrado Com Sucesso</h2>
-            <p>Great, the card is now registered!</p>
-          </div>
+              <Stack sx={{ width: '100%' }} spacing={2}>
+            <Alert severity="success">Filme registrado com com sucesso!<br/>The movie is now registered!</Alert>
+            </Stack>
         )}
       </PageContent>
     </PageContainer>

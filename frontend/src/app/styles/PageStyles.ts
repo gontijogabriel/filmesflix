@@ -11,7 +11,7 @@ export const PageContent = styled.div`
   padding: 0 1.5rem;
   flex-direction: column;
   padding: 20px;
-  .searchinput {
+  .input {
     width: 80%;
     height: 35px;
     padding: 0 6px 0 8px;

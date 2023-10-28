@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useState } from "react"
+import { IdContainer, IdContent } from "./style";
 
 export default function Cardpage({ params }: { params: { id: string } }) {
   const { id } = params
@@ -23,11 +24,17 @@ export default function Cardpage({ params }: { params: { id: string } }) {
   console.log(data);
   const { titulo, url_imagem, descricao } = data
   return (
-    <div>
-      {`Numero do Card e: ${id}`}
-      <h2>{titulo}</h2>
-      <p>{descricao}</p>
-      <img src={url_imagem} width={200} height={200} alt="" />
-    </div>
+    <IdContainer>
+      <IdContent>
+        <img src={url_imagem} width={400} height={400} alt="" />
+        <div>
+
+        {`Numero do Card e: ${id}`}
+        <h2>{titulo}</h2>
+        <p>{descricao}</p>
+        </div>
+
+      </IdContent>
+    </IdContainer>
   )
 }

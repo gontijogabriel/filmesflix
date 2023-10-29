@@ -7,6 +7,7 @@ const P = styled.p`
   align-items: center;
   justify-content: center;
   border-radius: 8px;
+  font-weight: bold;
   color: white;
   background-color: red;
 

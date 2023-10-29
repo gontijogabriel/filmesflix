@@ -7,6 +7,7 @@ import Circle from "../components/Avaliacao";
 import CircleRating from "../components/Avaliacao";
 import { List } from "@mui/material";
 import { HeartBreak, ListChecks, MarkerCircle, Star } from "phosphor-react";
+import Indicacao from "../components/Indicacao";
 
 export default function Cardpage({ params }: { params: { id: string } }) {
   const { id } = params
@@ -35,7 +36,7 @@ export default function Cardpage({ params }: { params: { id: string } }) {
         <div className="container">
           <h2>{titulo} ({estreia && estreia.slice(0, 4)})</h2>
           <div className="info">
-            <p>{indicacao}</p>
+            <Indicacao indicacao={indicacao}/>
             <p>{tema}...</p>
           </div>
           <div className="options">
@@ -54,7 +55,7 @@ export default function Cardpage({ params }: { params: { id: string } }) {
           </div>
 
 
-         
+
           <p>{descricao}</p>
         </div>
 

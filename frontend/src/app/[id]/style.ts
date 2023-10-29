@@ -9,10 +9,37 @@ export const IdContainer = styled.main`
 export const IdContent = styled.div`
   min-height: calc(100vh - 266px);
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
+  gap: 2rem;
   padding: 20px;
-  div {
-    width: 50%;
-    background:  ${props => props.theme["green-700"]};
+  div.container {
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    background: ${props => props.theme['gray-100']};
+    gap: 2rem;
+    padding: 20px;
+  }
+  .class {
+    display: flex;
+    flex-direction: column;
+  }
+  .options {
+    display: flex;
+    align-items: center;
+    column-gap: 1rem;
+  }
+  .circle {
+    border-radius: 50%;
+    height: 50px;
+    width: 55px;
+    color: white;
+    background-color: turquoise;
+    border: none;
+  }
+  .info {
+    display: flex;
+
+    padding: 0;
   }
 `

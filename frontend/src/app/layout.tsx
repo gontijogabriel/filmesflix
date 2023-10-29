@@ -17,13 +17,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <Header />
         <ThemeProvider theme={defaultTheme}>
+        <Header />
           <MyContextProvider>
             {children}
           </MyContextProvider>
-        </ThemeProvider>
         <Footer />
+        </ThemeProvider>
         <Globalstyle />
       </body>
     </html>

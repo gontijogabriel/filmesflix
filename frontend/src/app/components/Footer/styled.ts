@@ -3,7 +3,7 @@ import styled from 'styled-components'
 export const FooterContainer = styled.footer`
   padding: 0rem 0.5rem;
   border-top: 1px solid lightGray;
-  background: black;
+  background: ${props => props.theme['gray-900']};
 `
 export const FooterContent = styled.div`
   width: 100%;
@@ -16,6 +16,7 @@ export const FooterContent = styled.div`
   color: gray;
   font-size: 14px;
   min-height: 200px;
+
   a {
     text-decoration: none;
     color: gray;

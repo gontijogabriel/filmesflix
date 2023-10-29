@@ -16,6 +16,7 @@ export interface CardProps {
   estreia: string;
   url_imagem: string;
   atores_principais: string;
+  avaliacao?: string;
   deletedCard: (id: string) => void
   setId: (id: string) => void
   variable: 'modal' | 'default'

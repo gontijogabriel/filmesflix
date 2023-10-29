@@ -13,6 +13,6 @@ export const IdContent = styled.div`
   padding: 20px;
   div {
     width: 50%;
-    background: red;
+    background:  ${props => props.theme["green-700"]};
   }
 `

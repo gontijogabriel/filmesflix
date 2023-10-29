@@ -4,6 +4,8 @@ import { Globalstyle } from "./globalstyles";
 import { Header } from "./components/Header";
 import { Footer } from "./components/Footer";
 import { MyContextProvider } from "./context/MyContext";
+import { ThemeProvider } from "styled-components";
+import { defaultTheme } from "./styles/themes/themeDefault";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -16,12 +18,14 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <Header />
-        <MyContextProvider>
-          {children}
-        </MyContextProvider>
+        <ThemeProvider theme={defaultTheme}>
+          <MyContextProvider>
+            {children}
+          </MyContextProvider>
+        </ThemeProvider>
         <Footer />
+        <Globalstyle />
       </body>
-      <Globalstyle />
     </html>
   );
 }

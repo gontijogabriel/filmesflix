@@ -6,6 +6,7 @@ import { Footer } from "./components/Footer";
 import { MyContextProvider } from "./context/MyContext";
 import { ThemeProvider } from "styled-components";
 import { defaultTheme } from "./styles/themes/themeDefault";
+import StyledComponentsRegistry from "@/lib/registry";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -17,14 +18,17 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <ThemeProvider theme={defaultTheme}>
-        <Header />
-          <MyContextProvider>
-            {children}
-          </MyContextProvider>
-        <Footer />
-        </ThemeProvider>
-        <Globalstyle />
+        <StyledComponentsRegistry>
+          <ThemeProvider theme={defaultTheme}>
+            <Header />
+            <MyContextProvider>
+
+              {children}
+            </MyContextProvider>
+            <Footer />
+          </ThemeProvider>
+          <Globalstyle />
+        </StyledComponentsRegistry>
       </body>
     </html>
   );

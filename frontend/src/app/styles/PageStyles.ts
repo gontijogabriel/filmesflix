@@ -4,7 +4,7 @@ import styled from 'styled-components'
 export const PageContainer = styled.main``
 
 export const PageContent = styled.div`
-  min-height: calc(100vh - 350px);
+  min-height: calc(100vh - 266px);
   margin: 0 auto;
   width: 100%;
   max-width: 1200px;

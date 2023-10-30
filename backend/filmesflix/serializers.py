@@ -5,5 +5,3 @@ class FilmesSerializer(serializers.ModelSerializer):
     class Meta:
         model = Filmes
         fields = '__all__'
-
-

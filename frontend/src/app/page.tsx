@@ -15,6 +15,7 @@ import 'swiper/css/scrollbar';
 import 'swiper/css/effect-creative';
 import { EffectCreative } from 'swiper/modules';
 import { MagnifyingGlass } from "phosphor-react";
+import FreeSoloCreateOptionDialog from "./components/Search";
 
 
 export default function Home() {
@@ -131,6 +132,7 @@ export default function Home() {
             <MagnifyingGlass size={25} color="#756e6e" />
           </button>
           <input type="text" placeholder="Search you Movie" name="search" id="search" onChange={handleSearchValue} className="searchinput" onKeyDown={handleEnterKey} />
+          <FreeSoloCreateOptionDialog/>
 
         </div>
         <Swiper

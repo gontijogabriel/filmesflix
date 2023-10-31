@@ -98,6 +98,7 @@ export default function FreeSoloCreateOptionDialog() {
           }
           return option.title;
         }}
+        sx={{borderRadius:'50px'}} 
         selectOnFocus
         clearOnBlur
         handleHomeEndKeys
@@ -121,18 +122,19 @@ export default function FreeSoloCreateOptionDialog() {
         freeSolo
         renderInput={(params) => <TextField {...params} label="Search You Movie" />}
       />
-      <Dialog open={open} onClose={handleClose}>
+      <Dialog open={open} onClose={handleClose}  sx={{borderRadius:'50px'}}>
         <form onSubmit={handleSubmit}>
           <DialogTitle>Add a new film</DialogTitle>
           <DialogContent>
             <DialogContentText>
               Did you miss any film in our list? Please, add it!
-            </DialogContentText>
+            </DialogContentText >
             <TextField
               autoFocus
               margin="dense"
               id="name"
               value={dialogValue.title}
+              sx={{borderRadius:'50px'}}
               onChange={(event) =>
                 setDialogValue({
                   ...dialogValue,

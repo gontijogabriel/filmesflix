@@ -11,11 +11,11 @@ export const PageContent = styled.div`
   padding: 0 1.5rem;
   flex-direction: column;
   padding: 20px;
-  .input {
-    width: 80%;
+  div.input {
+    width: 100%;
     height: 35px;
     padding: 0 6px 0 8px;
-    background: #f2f2f2;
+    background: #f2f;
     color: gray;
     border-radius: 8px;
     font-size: 15px;
@@ -23,10 +23,19 @@ export const PageContent = styled.div`
     position: relative;
     outline: none;
   }
+  .searchinput{
+    width: 90%;
+    height: 30px;
+    background: none;
+    border: none;
+    outline: none;
+    font-size: 18px;
+  }
   .pesquisa {
     position: absolute;
-    right: 125px;
-    top: 3px;
+    right: 15px;
+    background: none;
+    top: 5px;
     z-index: 50;
     border: none;
   }

@@ -39,7 +39,6 @@ export default function Home() {
   useEffect(() => {
     fetchDataForCarrosel()
   }, [])
-  console.log(dataCarrosel)
   const handleSearchValue = (e: ChangeEvent<HTMLInputElement>) => {
     setSearchValue(e.target.value);
   }
@@ -131,8 +130,7 @@ export default function Home() {
           <button className="pesquisa" onClick={handleSearchfetch}>
             <MagnifyingGlass size={25} color="#756e6e" />
           </button>
-          <input type="text" placeholder="Search you Movie" name="search" id="search" onChange={handleSearchValue} className="searchinput" onKeyDown={handleEnterKey} />
-          <FreeSoloCreateOptionDialog/>
+          <input type="text" placeholder="Search you Movie"  name="search" id="search" onChange={handleSearchValue} className="searchinput" onKeyDown={handleEnterKey} />
 
         </div>
         <Swiper

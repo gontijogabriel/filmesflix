@@ -2,6 +2,9 @@
 import styled from "styled-components";
 
 export const HeaderContainer = styled.header`
+display: flex;
+align-items: center;
+justify-content: center;
 padding: 0rem 0.5rem;
 border-bottom:1px solid lightGray;
 
@@ -97,6 +100,8 @@ li{
 nav{
   display:flex;
   align-items:center;
+  z-index: 2000;
+
 
 }
 .mobile{
@@ -106,10 +111,16 @@ nav{
   font-weight: bold;
   color: #266AA9;
 }
+button.mobile{
+  display: none;
+}
 @media (max-width:1075px){
   div.button{
     display: none;
   }
+  button.mobile{
+  display: flex;
+}
   .mobile{
     visibility: visible;
     position: relative;

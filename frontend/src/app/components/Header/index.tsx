@@ -4,6 +4,8 @@ import { HeaderContainer, HeaderContent } from "./styled";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
+import { Button } from "@mui/material";
+import { defaultTheme } from "@/app/styles/themes/themeDefault";
 
 export const Header = () => {
   const [open, setOpen] = useState<boolean>(false);
@@ -21,14 +23,14 @@ export const Header = () => {
     };
   }, []);
   return (
-    <HeaderContainer>
+    <HeaderContainer theme={defaultTheme}>
       <HeaderContent>
         <Link href="/">
           <h2
             className={pathname == "/" ? "active-link" : ""}
             onClick={() => setOpen(false)}
           >
-            FilmesFlix
+            FilmesFlix  
           </h2>
         </Link>
         <nav className={open ? "actived" : ""}>
@@ -38,7 +40,7 @@ export const Header = () => {
                 className={pathname == "/register" ? "active-link" : ""}
                 onClick={() => setOpen(false)}
               >
-                Register Movies
+                Registre seu filme
               </li>
             </Link>
 
@@ -47,7 +49,7 @@ export const Header = () => {
                 className={pathname == "/movies" ? "active-link" : ""}
                 onClick={() => setOpen(false)}
               >
-                All Movies
+                Todos os filmes
 
               </li>
             </Link>
@@ -64,42 +66,81 @@ export const Header = () => {
                 className={pathname == "/about" ? "active-link" : ""}
                 onClick={() => setOpen(false)}
               >
-                About
+                Sobre nós
               </li>
             </Link>
           </ul>
           {open && (
             <div className="">
-              <button className="acessar">
+              <Button size="small" className="acessar">
                 <User size={28} color="#7d7373" />
                 Acessar conta
-              </button>
-              <button className="assine">Assine já!</button>
+              </Button>
+              <Button size="small" className="assine">Assine já!</Button>
             </div>
           )}
         </nav>
         {pathname !== '/' ? <div className="input">
-          <input type="text" placeholder="Search you Movie" />
+          <input type="text" placeholder="Procure o seu filme" />
           <span>
             <MagnifyingGlass size={25} color="#756e6e" />
           </span>
         </div> : ''}
 
         <div className="button">
-          <button className="acessar">
-            <User size={28} color="#7d7373" />
+          <Button sx={{
+      width:'170px',
+      height:'35px',
+      padding:'0 6px 0 8px',
+      background:'black',
+      color: '#fe6f27',
+      borderRadius:'8px',
+      fontSize:'15px',
+      '&:hover': {
+        backgroundColor: '#fe6f27',
+        color: 'black',
+        border: '1px solid #fe6f27',
+      },
+      border: '1px solid #fe6f27',
+      }}
+      variant="outlined" size="small" >
+       <User
+      size={24}
+      sx={{
+        color: '#fe6f27',
+        '&:hover': {
+          color: 'black',
+        },
+      }}
+    />
             Acessar conta
-          </button>
-          <button className="assine">Cadastre-se!</button>
+          </Button>
+          <Button 
+          sx={{
+            width:'170px',
+      height:'35px',
+      padding:'0 6px 0 8px',
+      background:'black',
+      color: '#fe6f27',
+      borderRadius:'8px',
+      fontSize:'15px',
+      '&:hover': {
+        backgroundColor: '#fe6f27',
+        color: 'black',
+        border: '1px solid #fe6f27',
+      },
+      border: '1px solid #fe6f27',
+            }}
+          size="small" variant="contained">Cadastre-se!</Button>
         </div>
-        <button
+        <Button
           className={open ? "mobile actived" : "mobile"}
           onClick={() => setOpen(!open)}
         >
           <hr className="one" />
           <hr className="two" />
           <hr className="tree" />
-        </button>
+        </Button>
       </HeaderContent>
     </HeaderContainer>
   );

@@ -1,4 +1,4 @@
-import { GithubLogo, InstagramLogo, TwitterLogo } from "phosphor-react";
+import { GithubLogo, InstagramLogo, LinkedinLogo, TwitterLogo } from "phosphor-react";
 import {
   FooterBotton,
   FooterContainer,
@@ -18,39 +18,18 @@ export const Footer = () => {
       <FooterContent>
         <div className="about">
           <h4>About Team</h4>
-          <a href="#">Gabriel</a>
-          <a href="#">Elias</a>
-          <a href="#">Pigurito</a>
+          <a href="#">Gabriel Gontijo</a>
+          <a href="#">Elias F Martins</a>
+          <a href="#">Felipe Daniel</a>
+        </div>
+        <div className="social">
+          <h4>Social-Media</h4>
+          <a href="#"><InstagramLogo size={32} /> <LinkedinLogo size={32} /> <GithubLogo size={32} /></a>
+          <a href="#"><InstagramLogo size={32} /> <LinkedinLogo size={32} /> <GithubLogo size={32} /></a>
+          <a href="#"><InstagramLogo size={32} /> <LinkedinLogo size={32} /> <GithubLogo size={32} /></a>
         </div>
 
-        <div className="More">
-          <h4>Social</h4>
-          <a href="#">Gabriel</a>
-          <a href="#">Elias</a>
-          <a href="#">Pigurito</a>
 
-        </div>
-        <div className="More">
-          <h4>Social</h4>
-          <a href="#">Gabriel</a>
-          <a href="#">Elias</a>
-          <a href="#">Pigurito</a>
-
-        </div>
-        <div className="More">
-          <h4>Social</h4>
-          <a href="#">Gabriel</a>
-          <a href="#">Elias</a>
-          <a href="#">Pigurito</a>
-
-        </div>
-        <div className="More">
-          <h4>Social</h4>
-          <a href="#">Gabriel</a>
-          <a href="#">Elias</a>
-          <a href="#">Pigurito</a>
-
-        </div>
       </FooterContent>
     </FooterContainer>
   );

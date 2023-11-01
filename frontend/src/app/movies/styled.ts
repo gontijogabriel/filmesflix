@@ -7,7 +7,8 @@ export const MoviesContainer = styled.main`
   justify-content: center;
 `
 export const MovieContent = styled.div`
-  padding: 25px;
+  min-height: calc(100vh - 350px);
+  padding: 50px;
   min-height: 55vh;
   max-width: 1200px;
   width: 100%;

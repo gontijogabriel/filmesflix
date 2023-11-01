@@ -120,18 +120,17 @@ export const Header = () => {
             width:'170px',
       height:'35px',
       padding:'0 6px 0 8px',
-      background:'black',
-      color: '#fe6f27',
+      background:'#fe6f27',
+      color: 'black',
       borderRadius:'8px',
       fontSize:'15px',
       '&:hover': {
-        backgroundColor: '#fe6f27',
-        color: 'black',
-        border: '1px solid #fe6f27',
+        backgroundColor: '#E64727',
+        border: '1px solid #E64727',
       },
       border: '1px solid #fe6f27',
             }}
-          size="small" variant="contained">Cadastre-se!</Button>
+          size="small" variant="outlined">Cadastre-se!</Button>
         </div>
         <Button
           className={open ? "mobile actived" : "mobile"}

@@ -1,6 +1,13 @@
 'use client'
 
 import { useEffect, useState } from "react"
+import { IdContainer, IdContent } from "./style";
+import { CardProps } from "../components/Card";
+import Circle from "../components/Avaliacao";
+import CircleRating from "../components/Avaliacao";
+import { List } from "@mui/material";
+import { HeartBreak, ListChecks, MarkerCircle, Star } from "phosphor-react";
+import Indicacao from "../components/Indicacao";
 
 export default function Cardpage({ params }: { params: { id: string } }) {
   const { id } = params
@@ -20,14 +27,39 @@ export default function Cardpage({ params }: { params: { id: string } }) {
     fetchData();
   }, [id]);
 
-  console.log(data);
-  const { titulo, url_imagem, descricao } = data
+  const { titulo, url_imagem, descricao, avaliacao, tema, estreia, atores_principais, indicacao } = data as CardProps
   return (
-    <div>
-      {`Numero do Card e: ${id}`}
-      <h2>{titulo}</h2>
-      <p>{descricao}</p>
-      <img src={url_imagem} width={200} height={200} alt="" />
-    </div>
+    <IdContainer>
+      <IdContent>
+        <img src={url_imagem} width={250} height={400} alt="" />
+
+        <div className="container">
+          <h2>{titulo} ({estreia && estreia.slice(0, 4)})</h2>
+          <div className="info">
+            <Indicacao indicacao={indicacao}/>
+            <p>{tema}...</p>
+          </div>
+          <div className="options">
+            <CircleRating rating={95} tamanho={70} />
+            <div className="class">
+              <p>Classificação</p>
+              <p>Geral</p>
+              <p>dos</p>
+              <p>Utilizadores</p>
+            </div>
+            <button className="circle"><ListChecks size={30} /></button>
+            <button className="circle"><HeartBreak size={30} /></button>
+            <button className="circle"><MarkerCircle size={30} /></button>
+            <button className="circle"><Star size={30} /></button>
+
+          </div>
+
+
+
+          <p>{descricao}</p>
+        </div>
+
+      </IdContent>
+    </IdContainer>
   )
 }

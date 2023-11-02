@@ -178,7 +178,7 @@ console.log(formData)
     </Select>
   </Box>
 
-  <Box sx={{ "& > :not(style)": { m: 1, width: "200px", minWidth: "11rem", width: "auto" } }}>
+  <Box sx={{ "& > :not(style)": { m: 1, width: "200px", minWidth: "5rem", width: "auto" } }}>
     <InputLabel id="indicacao-label">Classificação indicativa:</InputLabel>
     <Select
       labelId="indicacao-label"

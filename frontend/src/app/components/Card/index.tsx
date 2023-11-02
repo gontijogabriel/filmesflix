@@ -46,7 +46,7 @@ export const Card = ({ id, atores_principais, url_imagem, titulo, descricao, tem
           </span>
         </div>
         <div>
-          {/* <button onClick={editCard}>Edit Card</button> */}
+          <button onClick={editCard}>Edit Card</button>
 
 
           {/* <button onClick={() => deletedCard(id)}>Delete Card</button> */}

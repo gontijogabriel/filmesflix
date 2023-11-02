@@ -2,7 +2,6 @@ import styled from 'styled-components'
 
 export const FooterContainer = styled.footer`
   padding: 0rem 0.5rem;
-  border-top: 1px solid lightGray;
   background: ${props => props.theme['gray-900']};
 `
 export const FooterContent = styled.div`
@@ -13,13 +12,13 @@ export const FooterContent = styled.div`
   display: flex;
   align-items: center;
   gap: 1rem 2rem;
-  color: gray;
+  color: ${({theme})=> theme['orange-01']};
   font-size: 14px;
   min-height: 200px;
 
   a {
     text-decoration: none;
-    color: gray;
+    color: ${({theme})=> theme['orange-01']};
   }
   div {
     display: flex;

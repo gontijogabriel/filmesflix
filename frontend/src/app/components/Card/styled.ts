@@ -4,12 +4,13 @@ export const CardContainer = styled.div<{ variable: 'modal' | 'default' }>`
   ${({ variable }) =>
     variable === 'modal' &&
     css`
+      background: ${({ theme }) => theme['gray-900']};
       display: flex;
       width: 100%;
       padding: 20px;
-      background: purple;
       align-items: center;
       justify-content: space-between;
+      border-radius: 8px;
     `}
   img {
     width: 250px;
@@ -22,9 +23,16 @@ export const CardContainer = styled.div<{ variable: 'modal' | 'default' }>`
   }
 `
 export const CardContent = styled.div<{ variable: 'modal' | 'default' }>`
+  color: ${({ theme }) => theme['gray-300']};
+  .linkpage{
+    padding: 8px;
+    color: white;
+    border-radius: 25px;
+  }
   ${({ variable }) =>
     variable === 'default' &&
     css`
+      color: white;
       max-width: 280px;
       height: 25vh;
       max-height: 400px;

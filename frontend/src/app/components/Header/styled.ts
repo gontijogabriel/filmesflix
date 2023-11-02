@@ -6,7 +6,6 @@ export const HeaderContainer = styled.header`
   align-items: center;
   justify-content: center;
   padding: 0rem 0.5rem;
-  border-bottom: 1px solid lightGray;
   background: ${({ theme }) => theme['gray-900']};
   color: ${({ theme }) => theme['orange-01']};
 `
@@ -97,6 +96,7 @@ export const HeaderContent = styled.div`
     transition: 0.6s;
     border: solid transparent 1px;
     padding: 5px;
+    font-weight: bold;
   }
   nav {
     display: flex;

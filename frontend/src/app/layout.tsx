@@ -1,5 +1,5 @@
 "use client";
-import { Inter } from "next/font/google";
+import { Nunito_Sans} from "next/font/google";
 import { Globalstyle } from "./globalstyles";
 import { Header } from "./components/Header";
 import { Footer } from "./components/Footer";
@@ -8,7 +8,7 @@ import { ThemeProvider } from "styled-components";
 import { defaultTheme } from "./styles/themes/themeDefault";
 import StyledComponentsRegistry from "@/lib/registry";
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Nunito_Sans({ subsets: ["latin"],weight:'400' });
 
 export default function RootLayout({
   children,

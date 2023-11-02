@@ -128,7 +128,7 @@ export default function Home() {
       <PageContent>
         <div className="input">
           <button className="pesquisa" onClick={handleSearchfetch}>
-            <MagnifyingGlass size={25} color="#756e6e" />
+            <MagnifyingGlass size={25} color="#000000" />
           </button>
           <input type="text" placeholder="Search you Movie"  name="search" id="search" onChange={handleSearchValue} className="searchinput" onKeyDown={handleEnterKey} />
 

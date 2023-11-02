@@ -5,6 +5,7 @@ export const MoviesContainer = styled.main`
   display: flex;
   align-items: center;
   justify-content: center;
+  background: black;
 `
 export const MovieContent = styled.div`
   min-height: calc(100vh - 350px);

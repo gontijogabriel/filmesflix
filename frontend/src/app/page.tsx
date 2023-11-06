@@ -25,6 +25,8 @@ export default function Home() {
   const [searchValue, setSearchValue] = useState('');
   const [movieData, setMovieData] = useState([]);
   const [idEdit, setIdEdit] = useState('')
+  const [carouselDataLoaded, setCarouselDataLoaded] = useState(false);
+
 
   const fetchDataForCarrosel = async () => {
     try {
@@ -37,7 +39,9 @@ export default function Home() {
     }
   };
   useEffect(() => {
-    fetchDataForCarrosel()
+    fetchDataForCarrosel().then(()=>{
+      setCarouselDataLoaded(true);
+    })
   }, [])
   const handleSearchValue = (e: ChangeEvent<HTMLInputElement>) => {
     setSearchValue(e.target.value);
@@ -133,56 +137,56 @@ export default function Home() {
           <input type="text" placeholder="Search you Movie"  name="search" id="search" onChange={handleSearchValue} className="searchinput" onKeyDown={handleEnterKey} />
 
         </div>
-        <Swiper
-          modules={[Navigation, Pagination, Scrollbar, A11y, EffectCoverflow, EffectCreative, Autoplay]}
-          spaceBetween={50}
-          slidesPerView={1}
-          allowSlideNext={true}
-          // effect={'coverflow'}
-          // effect={'creative'}
-          // coverflowEffect={{
-          //   rotate: 50,
-          //   stretch: 0,
-          //   depth: 100,
-          //   modifier: 1,
-          //   slideShadows: true,
+       {carouselDataLoaded && (
+         <Swiper
+         modules={[Navigation, Pagination, Scrollbar, A11y, EffectCoverflow, EffectCreative, Autoplay]}
+         spaceBetween={50}
+         slidesPerView={1}
+         allowSlideNext={true}
+         // effect={'coverflow'}
+         // effect={'creative'}
+         // coverflowEffect={{
+         //   rotate: 50,
+         //   stretch: 0,
+         //   depth: 100,
+         //   modifier: 1,
+         //   slideShadows: true,
 
-          // }}
-          creativeEffect={{
-            prev: {
-              shadow: true,
-              translate: [0, 0, -400],
-            },
-            next: {
-              translate: ['100%', 0, 0],
-            },
-          }}
-          loop={true}
-          direction={"horizontal"}
-          autoplay={{ delay: 2000 }}
-          pagination={{ clickable: true }}
-          onSlideChange={() => console.log('slide change')}
-          onSwiper={(swiper) => console.log(swiper)}
-        >
+         // }}
+         creativeEffect={{
+           prev: {
+             shadow: true,
+             translate: [0, 0, -400],
+           },
+           next: {
+             translate: ['100%', 0, 0],
+           },
+         }}
+         loop={true}
+         direction={"horizontal"}
+         autoplay={{ delay: 2000 }}
+         pagination={{ clickable: true }}
+       >
 
-          {dataCarrosel.map(({ id, titulo, descricao, tema, indicacao, estreia, url_imagem }: CardProps) => (
-            <SwiperSlide key={id}>
-              <Card
-                variable="modal"
-                atores_principais='none'
-                id={id}
-                descricao={descricao}
-                titulo={titulo}
-                tema={tema}
-                indicacao={indicacao}
-                estreia={estreia}
-                url_imagem={url_imagem}
-                deletedCard={() => deleteCard(id)}
-                setId={setIdEdit}
-              />
-            </SwiperSlide>
-          ))}
-        </Swiper>
+         {dataCarrosel.map(({ id, titulo, descricao, tema, indicacao, estreia, url_imagem }: CardProps) => (
+           <SwiperSlide key={id}>
+             <Card
+               variable="modal"
+               atores_principais='none'
+               id={id}
+               descricao={descricao}
+               titulo={titulo}
+               tema={tema}
+               indicacao={indicacao}
+               estreia={estreia}
+               url_imagem={url_imagem}
+               deletedCard={() => deleteCard(id)}
+               setId={setIdEdit}
+             />
+           </SwiperSlide>
+         ))}
+       </Swiper>
+       )}
         <div className="cards-content">
 
 

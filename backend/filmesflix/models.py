@@ -36,12 +36,6 @@ class Filmes(models.Model):
     estreia = models.DateField(blank=False, null=False)
     atores_principais = models.CharField(max_length=255, blank=False, null=False)
     url_imagem = models.TextField()
-    avaliacao = models.IntegerField(
-        blank=True,
-        null=True, 
-        default=0,
-    )
-    total_votos = models.IntegerField(blank=True, null=True, default=0)
     
     def __str__(self):
         return self.titulo

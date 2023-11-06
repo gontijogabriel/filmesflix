@@ -7,7 +7,7 @@ export const PageContainer = styled.main`
 
 export const PageContent = styled.div`
 
-  min-height: calc(100vh - 266px);
+  min-height: calc(100vh - 264px);
   color: lightgray;
   margin: 0 auto;
   width: 100%;

@@ -6,9 +6,9 @@ export const MoviesContainer = styled.main`
   align-items: center;
   justify-content: center;
   background: black;
+  min-height: calc(100vh - 264px);
 `
 export const MovieContent = styled.div`
-  min-height: calc(100vh - 350px);
   padding: 50px;
   min-height: 55vh;
   max-width: 1200px;

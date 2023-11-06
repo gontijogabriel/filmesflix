@@ -53,14 +53,14 @@ export const Header = () => {
 
               </li>
             </Link>
-            <Link href={"/hot"}>
+            {/* <Link href={"/hot"}>
               <li
                 className={pathname == "/hot" ? "active-link" : ""}
                 onClick={() => setOpen(false)}
               >
                 Hot
               </li>
-            </Link>
+            </Link> */}
             <Link href={"about"}>
               <li
                 className={pathname == "/about" ? "active-link" : ""}
@@ -88,50 +88,9 @@ export const Header = () => {
         </div> : ''}
 
         <div className="button">
-          <Button sx={{
-      width:'170px',
-      height:'35px',
-      padding:'0 6px 0 8px',
-      background:'black',
-      color: '#fe6f27',
-      borderRadius:'8px',
-      fontSize:'15px',
-      '&:hover': {
-        backgroundColor: '#fe6f27',
-        color: 'black',
-        border: '1px solid #fe6f27',
-      },
-      border: '1px solid #fe6f27',
-      }}
-      variant="outlined" size="small" >
-       <User
-      size={24}
-      sx={{
-        color: '#fe6f27',
-        '&:hover': {
-          color: 'black',
-        },
-      }}
-    />
-            Acessar conta
-          </Button>
-          <Button 
-          sx={{
-            width:'170px',
-      height:'35px',
-      padding:'0 6px 0 8px',
-      background:'#fe6f27',
-      color: 'black',
-      borderRadius:'8px',
-      fontSize:'15px',
-      '&:hover': {
-        backgroundColor: '#E64727',
-        border: '1px solid #E64727',
-      },
-      border: '1px solid #fe6f27',
-            }}
-          size="small" variant="outlined">Cadastre-se!</Button>
-        </div>
+         
+      
+          </div>
         <Button
           className={open ? "mobile actived" : "mobile"}
           onClick={() => setOpen(!open)}

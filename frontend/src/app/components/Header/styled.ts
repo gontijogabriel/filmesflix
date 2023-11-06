@@ -179,7 +179,7 @@ export const HeaderContent = styled.div`
       right: 0;
       height: 0;
       overflow-y: hidden;
-      background: white;
+      background: black;
       transition: 1.2s;
       ul {
         display: flex;

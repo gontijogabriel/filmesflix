@@ -30,7 +30,7 @@ export const Header = () => {
             className={pathname == "/" ? "active-link" : ""}
             onClick={() => setOpen(false)}
           >
-            FilmesFlix  
+            FilmesFlix
           </h2>
         </Link>
         <nav className={open ? "actived" : ""}>
@@ -82,15 +82,17 @@ export const Header = () => {
         </nav>
         {pathname !== '/' ? <div className="input">
           <input type="text" placeholder="Procure o seu filme" />
-          <span>
-            <MagnifyingGlass size={25} color="#756e6e" />
-          </span>
+            <span>
+          <Link href='/'>
+              <MagnifyingGlass size={25} color="#756e6e" />
+          </Link>
+            </span>
         </div> : ''}
 
         <div className="button">
-         
-      
-          </div>
+
+
+        </div>
         <Button
           className={open ? "mobile actived" : "mobile"}
           onClick={() => setOpen(!open)}

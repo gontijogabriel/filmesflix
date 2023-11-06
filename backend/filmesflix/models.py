@@ -6,27 +6,27 @@ class Filmes(models.Model):
 
 
     TEMAS = [
-        (0, 'Acao'),
-        (1, 'Aventura'),
-        (2, 'Comedia'),
-        (3, 'Drama'),
-        (4, 'Ficcao Cientifica'),
-        (5, 'Guerra'),
-        (6, 'Romance'),
-        (7, 'Terror'),
-        (8, 'Animacao'),
-        (9, 'Musical'),
-        (10, 'Crime'),
-        (11, 'Historia Real'),
+        ('Acao', 'Acao'),
+        ('Aventura', 'Aventura'),
+        ('Comedia', 'Comedia'),
+        ('Drama', 'Drama'),
+        ('Ficcao Cientifica', 'Ficcao Cientifica'),
+        ('Guerra', 'Guerra'),
+        ('Romance', 'Romance'),
+        ('Terror', 'Terror'),
+        ('Animacao', 'Animacao'),
+        ('Musical', 'Musical'),
+        ('Crime', 'Crime'),
+        ('Historia Real', 'Historia Real'),
     ]
 
     INDICACAO = [
-        (0, 'Livre'),
-        (1, '10+'),
-        (2, '12+'),
-        (3, '14+'),
-        (4, '16+'),
-        (5, '18+'),
+        ('Livre', 'Livre'),
+        ('10+', '10+'),
+        ('12+', '12+'),
+        ('14+', '14+'),
+        ('16+', '16+'),
+        ('18+', '18+'),
     ]
 
     titulo = models.CharField(max_length=100, blank=False, null=False)

@@ -27,7 +27,6 @@ interface FormState {
 export default function Register() {
   const router = useRouter();
   const [showSuccessMessage, setShowSuccessMessage] = useState<boolean>(false);
-  "use client";
   const initialFormState: FormState = {
     titulo: "",
     descricao: "",

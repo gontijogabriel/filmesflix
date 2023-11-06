@@ -76,6 +76,7 @@ export default function Movies() {
           return (
 
             <Card
+            variable="default"
 
               atores_principais='none'
               key={id}

@@ -49,7 +49,7 @@ export const Card = ({ id, atores_principais, url_imagem, titulo, descricao, tem
           <button onClick={editCard}>Edit Card</button>
 
 
-          {/* <button onClick={() => deletedCard(id)}>Delete Card</button> */}
+          <button onClick={() => deletedCard(id)}>Delete Card</button>
           <Link href={`${id}`}>
             <button className="linkpage">
               teste page

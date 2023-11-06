@@ -1,4 +1,3 @@
-import { useClient } from "next-superjson";
 "use client";
 import React, { useState, SyntheticEvent, useEffect } from "react";
 import {
@@ -46,7 +45,7 @@ export default function Register() {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
-console.log(formData)
+  console.log(formData)
   const handleSubmit = async (e: SyntheticEvent) => {
     e.preventDefault();
     const form = e.target as HTMLFormElement;
@@ -86,11 +85,15 @@ console.log(formData)
   return (
     <PageContainer>
       <PageContent>
-      <Typography variant="h4" component="h2" gutterBottom>
+        <Typography variant="h4" component="h2" gutterBottom>
           Cadastro de Filme
         </Typography>
-        <form onSubmit={handleSubmit} method="post">
-          <Box sx={{ "& > :not(style)": { m: 1 } }}>
+        <form onSubmit={handleSubmit} method="post" style={{ background: '#121214', padding: '20px', borderRadius: '12px' }}>
+          <Box sx={{ "& > :not(style)": { m: 1 } }} >
+
+
+
+
             <TextField
               fullWidth
               label="Insira o nome do filme"
@@ -98,7 +101,29 @@ console.log(formData)
               name="titulo"
               value={formData.titulo}
               onChange={handleChange}
+              InputProps={{
+                classes: {
+                  focused: 'whiteOutline',
+                },
+                style: {
+                  color: 'white',
+                },
+              }}
+              InputLabelProps={{
+                style: { color: 'white' },
+              }}
+              sx={{
+                '& .MuiOutlinedInput-notchedOutline': {
+                  borderColor: 'white !important',
+                },
+              }}
             />
+
+
+
+
+
+
           </Box>
 
           <Box sx={{ "& > :not(style)": { m: 1 } }}>
@@ -111,6 +136,22 @@ console.log(formData)
               name="descricao"
               value={formData.descricao}
               onChange={handleChange}
+              InputProps={{
+                classes: {
+                  focused: 'whiteOutline',
+                },
+                style: {
+                  color: 'white',
+                },
+              }}
+              InputLabelProps={{
+                style: { color: 'white' },
+              }}
+              sx={{
+                '& .MuiOutlinedInput-notchedOutline': {
+                  borderColor: 'white !important',
+                },
+              }}
             />
           </Box>
 
@@ -122,6 +163,22 @@ console.log(formData)
               name="atores_principais"
               value={formData.atores_principais}
               onChange={handleChange}
+              InputProps={{
+                classes: {
+                  focused: 'whiteOutline',
+                },
+                style: {
+                  color: 'white',
+                },
+              }}
+              InputLabelProps={{
+                style: { color: 'white' },
+              }}
+              sx={{
+                '& .MuiOutlinedInput-notchedOutline': {
+                  borderColor: 'white !important',
+                },
+              }}
             />
           </Box>
 
@@ -133,83 +190,155 @@ console.log(formData)
               name="url_imagem"
               value={formData.url_imagem}
               onChange={handleChange}
+              InputProps={{
+                classes: {
+                  focused: 'whiteOutline',
+                },
+                style: {
+                  color: 'white',
+                },
+              }}
+              InputLabelProps={{
+                style: { color: 'white' },
+              }}
+              sx={{
+                '& .MuiOutlinedInput-notchedOutline': {
+                  borderColor: 'white !important',
+                },
+              }}
             />
           </Box>
 
           <div style={{ display: 'flex' }}>
-          <Box sx={{ "& > :not(style)": { m: 1, width: "auto" } }}>
-          <InputLabel id="tema">Data de estreia:</InputLabel>
-            <TextField
-              fullWidth
-              id="estreia"
-              name="estreia"
-              type="date"
-              value={formData.estreia}
-              onChange={handleChange}
-              InputLabelProps={{
-                shrink: true,
-              }}
-            />
-          </Box>
-          
-  <Box sx={{ "& > :not(style)": { m: 1, width: "200px", minWidth: "80px", width: "auto" } }}>
-    <InputLabel id="tema">Escolha o tema:</InputLabel>
-    <Select
-      labelId="tema"
-      id="tema"
-      name="tema"
-      value={formData.tema}
-      onChange={handleChange}
-    >
-      <MenuItem value=""></MenuItem>
-      <MenuItem value="Acao">Ação</MenuItem>
-      <MenuItem value="Aventura">Aventura</MenuItem>
-      <MenuItem value="Comedia">Comédia</MenuItem>
-      <MenuItem value="Drama">Drama</MenuItem>
-      <MenuItem value="Ficcao Cientifica">Ficção Científica</MenuItem>
-      <MenuItem value="Guerra">Guerra</MenuItem>
-      <MenuItem value="Romance">Romance</MenuItem>
-      <MenuItem value="Terror">Terror</MenuItem>
-      <MenuItem value="Animacao">Animação</MenuItem>
-      <MenuItem value="Musical">Musical</MenuItem>
-      <MenuItem value="Crime">Crime</MenuItem>
-      <MenuItem value="Historia Real">História Real</MenuItem>
-      {/* Adicione mais itens de menu conforme necessário */}
-    </Select>
-  </Box>
+            <Box sx={{ "& > :not(style)": { m: 1, width: "auto" } }}>
+              <InputLabel id="tema" sx={{ color: 'white' }}>Data de estreia:</InputLabel>
+              <TextField
+                fullWidth
+                id="estreia"
+                name="estreia"
+                type="date"
+                value={formData.estreia}
+                onChange={handleChange}
+                InputProps={{
+                  classes: {
+                    focused: 'whiteOutline',
+                  },
+                  style: {
+                    color: 'white',
+                  },
+                }}
+                InputLabelProps={{
+                  style: { color: 'white' },
+                  shrink: true,
+                }}
+                sx={{
+                  '& .MuiOutlinedInput-notchedOutline': {
+                    borderColor: 'white !important',
+                  },
+                  '& svg': {
+                    fill: 'white', // Define a cor da seta para branco
+                  },
+                }}
 
-  <Box sx={{ "& > :not(style)": { m: 1, width: "200px", minWidth: "5rem", width: "auto" } }}>
-    <InputLabel id="indicacao-label">Classificação indicativa:</InputLabel>
-    <Select
-      labelId="indicacao-label"
-      id="indicacao"
-      name="indicacao"
-      value={formData.indicacao}
-      onChange={handleChange}
-    >
-      <MenuItem value=""></MenuItem>
-      <MenuItem value="Livre">Livre</MenuItem>
-      <MenuItem value="10+">10+</MenuItem>
-      <MenuItem value="12+">12+</MenuItem>
-      <MenuItem value="14+">14+</MenuItem>
-      <MenuItem value="16+">16+</MenuItem>
-      <MenuItem value="18+">18+</MenuItem>
-      {/* Adicione mais itens de menu conforme necessário */}
-    </Select>
-  </Box>
+              />
+            </Box>
+
+            <Box sx={{ "& > :not(style)": { m: 1, width: "200px", minWidth: "80px", width: "auto", color: 'white' } }}>
+              <InputLabel id="tema">Escolha o tema:</InputLabel>
+              <Select
+                labelId="tema"
+                id="tema"
+                name="tema"
+                value={formData.tema}
+                onChange={handleChange}
+                InputProps={{
+                  classes: {
+                    focused: 'whiteOutline',
+                  },
+                  style: {
+                    color: 'white',
+                  },
+                }}
+                InputLabelProps={{
+                  style: { color: 'white' },
+                }}
+                sx={{
+                  '& .MuiOutlinedInput-notchedOutline': {
+                    borderColor: 'white !important',
+                  },
+                  '& svg': {
+                    fill: 'white', // Define a cor da seta para branco
+                  },
+                }}
+              >
+                <MenuItem value=""></MenuItem>
+                <MenuItem value="Acao">Ação</MenuItem>
+                <MenuItem value="Aventura">Aventura</MenuItem>
+                <MenuItem value="Comedia">Comédia</MenuItem>
+                <MenuItem value="Drama">Drama</MenuItem>
+                <MenuItem value="Ficcao Cientifica">Ficção Científica</MenuItem>
+                <MenuItem value="Guerra">Guerra</MenuItem>
+                <MenuItem value="Romance">Romance</MenuItem>
+                <MenuItem value="Terror">Terror</MenuItem>
+                <MenuItem value="Animacao">Animação</MenuItem>
+                <MenuItem value="Musical">Musical</MenuItem>
+                <MenuItem value="Crime">Crime</MenuItem>
+                <MenuItem value="Historia Real">História Real</MenuItem>
+                {/* Adicione mais itens de menu conforme necessário */}
+              </Select>
+            </Box>
+
+            <Box sx={{ "& > :not(style)": { m: 1, width: "200px", minWidth: "5rem", width: "auto", color: 'white' } }}>
+              <InputLabel id="indicacao-label">Classificação indicativa:</InputLabel>
+              <Select
+                labelId="indicacao-label"
+                id="indicacao"
+                name="indicacao"
+                value={formData.indicacao}
+                onChange={handleChange}
+                InputProps={{
+                  classes: {
+                    focused: 'whiteOutline',
+                  },
+                  style: {
+                    color: 'white',
+                  },
+                }}
+                InputLabelProps={{
+                  style: { color: 'white' },
+                }}
+                sx={{
+                  '& .MuiOutlinedInput-notchedOutline': {
+                    borderColor: 'white !important',
+                  },
+                  '& svg': {
+                    fill: 'white', // Define a cor da seta para branco
+                  },
+                }}
+              >
+                <MenuItem value=""></MenuItem>
+                <MenuItem value="Livre">Livre</MenuItem>
+                <MenuItem value="10+">10+</MenuItem>
+                <MenuItem value="12+">12+</MenuItem>
+                <MenuItem value="14+">14+</MenuItem>
+                <MenuItem value="16+">16+</MenuItem>
+                <MenuItem value="18+">18+</MenuItem>
+                {/* Adicione mais itens de menu conforme necessário */}
+              </Select>
+            </Box>
 
           </div>
           <Box sx={{ m: 1 }}>
-        <Button type="submit" variant="contained" color="success"
-      >
-          Cadastrar
-        </Button>
-      </Box>
+            <Button type="submit" variant="contained" color="success"
+            >
+              Cadastrar
+            </Button>
+          </Box>
         </form>
         {showSuccessMessage && (
-              <Stack sx={{ width: '100%' }} spacing={2}>
-            <Alert severity="success">Filme registrado com com sucesso!<br/>The movie is now registered!</Alert>
-            </Stack>
+          <Stack sx={{ width: '100%' }} spacing={2}>
+            <Alert severity="success">Filme registrado com com sucesso!<br />The movie is now registered!</Alert>
+          </Stack>
         )}
       </PageContent>
     </PageContainer>

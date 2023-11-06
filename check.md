@@ -1,18 +1,18 @@
 # aqui fica as tasks
 
 ## Carrossel
-[] Tirar botao editar card
-[] Tirar descricao do filme
-[] Ajustar indicacao e data
-[] Ajustar/editar botao de entrar na pagina no filme
+[x] Tirar botao editar card
+[x] Tirar descricao do filme
+[x] Ajustar indicacao e data
+[x] Ajustar/editar botao de entrar na pagina no filme
 
 ## Todos os Filmes
-[] Tirar botao editar card
-[] Tirar descricao dos filmes
-[] Ajustar indicacao e data
+[x] Tirar botao editar card
+[x] Tirar descricao dos filmes
+[x] Ajustar indicacao e data
 
 ## Pagina do Filme
 
-[] ajuste de todos os dados na pagina
-[] adicionar botao de voltar
-[] remover o que nao esta sendo utilizado
+[x] ajuste de todos os dados na pagina
+[x] adicionar botao de voltar
+[x] remover o que nao esta sendo utilizado

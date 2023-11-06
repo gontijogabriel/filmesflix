@@ -88,31 +88,29 @@ export default function Cardpage({ params }: { params: { id: string } }) {
       <IdContent>
         <img src={url_imagem} width={250} height={400} alt="" />
 
-        <div className="container">
+        <div className="container" >
           <h2>{titulo} ({estreia && estreia.slice(0, 4)})</h2>
           <div className="info">
-            <Indicacao indicacao={indicacao} />
-            <p>{tema}...</p>
-          </div>
-          <div className="options">
-            <CircleRating rating={95} tamanho={70} />
-            <div className="class">
+          <CircleRating rating={95} tamanho={70} />
+          <div className="class">
               <p>Classificação</p>
               <p>Geral</p>
               <p>dos</p>
               <p>Utilizadores</p>
             </div>
-            <button className="circle"><ListChecks size={30} /></button>
-            <button className="circle"><HeartBreak size={30} /></button>
-            <button className="circle"><MarkerCircle size={30} /></button>
-            <button className="circle"><Star size={30} /></button>
+            <Indicacao indicacao={indicacao} />
+            <p>{tema}...</p>
+            
+          </div>
+      
+          <div className="content">
 
+          <p>{descricao}</p>
           </div>
 
 
 
-          <p>{descricao}</p>
-          <div>
+          <div className="buttons">
             <button onClick={() => editCard()}>Update Card</button>
             <button onClick={() => deleteCard(id)}>Delete Card</button>
           </div>

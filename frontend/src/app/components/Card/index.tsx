@@ -33,7 +33,7 @@ export const Card = ({ id, atores_principais, url_imagem, titulo, descricao, tem
       <img src={`${url_imagem}`} alt="imagem Filme" />
       <CardContent variable={variable}>
         <h2>{titulo}</h2>
-        {variable === 'modal' && <p>{descricao}</p>}
+
         <h3>{tema}</h3>
         <div>
         <Indicacao indicacao={indicacao} />
@@ -48,7 +48,7 @@ export const Card = ({ id, atores_principais, url_imagem, titulo, descricao, tem
 
           <Link href={`${id}`}>
             <button className="linkpage">
-              teste page
+             Visualizar 
 
             </button>
           </Link>

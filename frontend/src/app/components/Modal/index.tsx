@@ -1,8 +1,15 @@
 import * as React from 'react'
-import Box from '@mui/material/Box'
-import Modal from '@mui/material/Modal'
 import { useMyContext } from '@/app/context/MyContext'
-
+import styled from 'styled-components';
+import {
+  Box,
+  Modal,
+  TextField,
+  Button,
+  InputLabel,
+  MenuItem,
+  Select,
+} from '@mui/material';
 const style = {
   position: 'absolute' as 'absolute',
   top: '50%',
@@ -12,7 +19,14 @@ const style = {
   bgcolor: 'background.paper',
   border: '2px solid #000',
   boxShadow: 24,
-  p: 4
+  display: 'flex',
+  flexDirection: 'column',
+  padding: '10px',
+  gap: '1rem',
+  p: 4,
+  zIndex: 9999, // Ajuste o valor do zIndex conforme necessário
+
+
 }
 export const BasicModal = ({ updateCard, idEdit }) => {
   const { isActived, data, toogleActived, updateData } = useMyContext();
@@ -60,52 +74,85 @@ export const BasicModal = ({ updateCard, idEdit }) => {
       aria-describedby='modal-modal-description'
     >
       <Box sx={style}>
-        <h2>Register</h2>
-        <form onSubmit={handleSubmit} method="post">
-          <label htmlFor="titulo">Isert the name Movie</label>
-          <input type="text" id="titulo" name="titulo" />
-          <label htmlFor="descricao">Descibre of Movie</label>
-          <textarea name="descricao" id="descricao" cols={30} rows={10}>
 
-          </textarea>
-          <label htmlFor="tema">Escola um tema:</label>
-          <select name="tema" id="tema">
-            <option value=""></option>
-            <option value="Acao">Ação</option>
-            <option value="Aventura">Aventura</option>
-            <option value="Comedia">Comédia</option>
-            <option value="Drama">Drama</option>
-            <option value="Ficcao Cientifica">Ficção Cienífica</option>
-            <option value="Guerra">Guerra</option>
-            <option value="Romance">Romance</option>
-            <option value="Terror">Terror</option>
-            <option value="Animacao">Animação</option>
-            <option value="Musical">Musical</option>
-            <option value="Crime">Crime</option>
-            <option value="Historia Real">História Real</option>
+        <h2>Edit Movie</h2>
+        <form onSubmit={handleSubmit} method="post" style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+          <TextField
+            fullWidth
+            label="Insert the Movie Name"
+            id="titulo"
+            name="titulo"
+          />
 
-          </select>
-          <label htmlFor="indicacao">Escolha uma indicação:</label>
-          <select name="indicacao" id="indicacao">
-            <option value=""></option>
-            <option value="Livre">Livre</option>
-            <option value="10+">10+</option>
-            <option value="12+">12+</option>
-            <option value="14+">14+</option>
-            <option value="16+">16+</option>
-            <option value="18+">18+</option>
-          </select>
-          <label htmlFor="estreia">Relese</label>
-          <input type="date" id="estreia" name="estreia" />
-          <label htmlFor="atores_principais">Main actors</label>
-          <input type="text" id="atores_principais" name="atores_principais" />
-          <label htmlFor="url_imagem">Link imagem para o filme </label>
-          <input type="text" id="url_imagem" name="url_imagem" />
+          <TextField
+            fullWidth
+            multiline
+            rows={3}
+            label="Description of Movie"
+            id="descricao"
+            name="descricao"
+          />
+          <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem' , marginRight:'25px'}}>
+            <InputLabel id="tema"></InputLabel>
 
+            <Select sx={{ width: '40%' }} labelId="tema" id="tema" name="tema"  >
 
-          <button type="submit" onClick={() => handleClose}>
-            send the form
-          </button>
+              <MenuItem value=""></MenuItem>
+              <MenuItem value="Acao">Ação</MenuItem>
+              <MenuItem value="Aventura">Aventura</MenuItem>
+              <MenuItem value="Comedia">Comédia</MenuItem>
+              <MenuItem value="Drama">Drama</MenuItem>
+              <MenuItem value="Ficcao Cientifica">Ficção Cienífica</MenuItem>
+              <MenuItem value="Guerra">Guerra</MenuItem>
+              <MenuItem value="Romance">Romance</MenuItem>
+              <MenuItem value="Terror">Terror</MenuItem>
+              <MenuItem value="Animacao">Animação</MenuItem>
+              <MenuItem value="Musical">Musical</MenuItem>
+              <MenuItem value="Crime">Crime</MenuItem>
+              <MenuItem value="Historia Real">História Real</MenuItem>
+            </Select>
+
+            <InputLabel id="indicacao-label"></InputLabel>
+            <Select
+              sx={{ width: '40%', }}
+
+              labelId="indicacao-label"
+              id="indicacao"
+              name="indicacao"
+            >
+              <MenuItem value=""></MenuItem>
+              <MenuItem value="Livre">Livre</MenuItem>
+              <MenuItem value="10+">10+</MenuItem>
+              <MenuItem value="12+">12+</MenuItem>
+              <MenuItem value="14+">14+</MenuItem>
+              <MenuItem value="16+">16+</MenuItem>
+              <MenuItem value="18+">18+</MenuItem>
+            </Select>
+
+          </div>
+
+          <TextField
+            fullWidth
+            type="date"
+            id="estreia"
+            name="estreia"
+          />
+
+          <TextField
+            fullWidth
+            label="Main Actors"
+            id="atores_principais"
+            name="atores_principais"
+          />
+
+          <TextField
+            fullWidth
+            label="Image URL for the Movie"
+            id="url_imagem"
+            name="url_imagem"
+          />
+
+          <Button type="submit">Update Movie</Button>
         </form>
       </Box>
     </Modal>

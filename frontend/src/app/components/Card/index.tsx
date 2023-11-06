@@ -6,6 +6,7 @@ import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import { useMyContext } from "@/app/context/MyContext";
 import Link from "next/link";
+import Indicacao from "../Indicacao";
 
 export interface CardProps {
   id: string
@@ -35,7 +36,8 @@ export const Card = ({ id, atores_principais, url_imagem, titulo, descricao, tem
         {variable === 'modal' && <p>{descricao}</p>}
         <h3>{tema}</h3>
         <div>
-          {indicacao}
+        <Indicacao indicacao={indicacao} />
+
           <span>
 
             {estreia}

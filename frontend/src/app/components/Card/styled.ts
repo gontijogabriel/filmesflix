@@ -1,6 +1,10 @@
 import styled, { css } from 'styled-components'
 
 export const CardContainer = styled.div<{ variable: 'modal' | 'default' }>`
+padding: 25px;
+border-radius: 8px;
+background:${({ theme }) => theme['gray-900']} ;
+
   ${({ variable }) =>
     variable === 'modal' &&
     css`
@@ -27,7 +31,11 @@ export const CardContent = styled.div<{ variable: 'modal' | 'default' }>`
   .linkpage{
     padding: 8px;
     color: white;
-    border-radius: 25px;
+    background-color: black;
+    border: solid white 1.5px;
+    border-radius: 8px;
+    padding: 12px;
+    margin-top: 10px;
   }
   ${({ variable }) =>
     variable === 'default' &&

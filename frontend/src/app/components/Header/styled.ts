@@ -101,7 +101,7 @@ export const HeaderContent = styled.div`
   nav {
     display: flex;
     align-items: center;
-    z-index: 2000;
+    z-index: 800;
   }
   .mobile {
     visibility: hidden;

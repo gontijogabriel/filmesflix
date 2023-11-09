@@ -86,7 +86,7 @@ export default function Cardpage({ params }: { params: { id: string } }) {
   return (
     <IdContainer>
       <IdContent>
-        <img src={url_imagem} width={250} height={400} alt="" />
+        <img src={url_imagem}  alt="" />
 
         <div className="container" >
           <h2>{titulo} ({estreia && estreia.slice(0, 4)})</h2>
